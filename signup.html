@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="signup.title">Create Patient Account | AuraMed AI</title>
+  
+  <!-- Tailwind CSS CDN with Dark Mode Support -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            teal: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              200: '#99f6e4',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a',
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'Cairo', 'Inter', 'sans-serif'],
+            body: ['Inter', 'Cairo', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Supabase JS Client CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col justify-between selection:bg-teal-100 selection:text-teal-900 transition-colors duration-200">
+
+  <!-- Header with Brand & Controls -->
+  <header class="w-full border-b border-slate-200/80 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md sticky top-0 z-30 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="signup.html" class="flex items-center gap-2.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 rounded-lg p-1">
+        <div class="w-9 h-9 rounded-xl bg-teal-700 text-white flex items-center justify-center shadow-sm group-hover:bg-teal-800 transition-colors">
+          <i data-lucide="cross" class="w-5 h-5"></i>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-base font-bold tracking-tight text-slate-900 dark:text-white leading-tight font-sans">
+            <span data-i18n="brand.name">AuraMed</span><span class="text-teal-700 dark:text-teal-400" data-i18n="brand.suffix">AI</span>
+          </span>
+          <span class="text-[10px] font-semibold text-slate-500 dark:text-slate-400 tracking-wider uppercase" data-i18n="brand.tagline">Clinical Assistant</span>
+        </div>
+      </a>
+
+      <!-- Navbar Right Controls -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Language Switcher -->
+        <button
+          type="button"
+          data-action="toggle-lang"
+          class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-teal-500"
+          title="Switch Language / تبديل اللغة"
+        >
+          <i data-lucide="globe" class="w-3.5 h-3.5 text-teal-600 dark:text-teal-400"></i>
+          <span class="lang-label">العربية</span>
+        </button>
+
+        <!-- Dark Mode Toggle -->
+        <button
+          type="button"
+          data-action="toggle-theme"
+          class="p-2 rounded-full text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-teal-500"
+          aria-label="Toggle Dark Mode"
+          title="Toggle Dark Mode"
+        >
+          <i data-lucide="moon" class="w-4 h-4"></i>
+        </button>
+
+        <!-- Sign In Link -->
+        <a href="login.html" class="text-xs font-semibold text-teal-700 dark:text-teal-400 hover:text-teal-800 dark:hover:text-teal-300 hidden sm:inline" data-i18n="signup.signin_link">
+          Sign In
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Content Layout -->
+  <main class="flex-1 flex items-center justify-center p-4 sm:p-6 lg:p-8">
+    <div class="w-full max-w-lg">
+
+      <!-- Card Container -->
+      <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm sm:shadow-md p-6 sm:p-8 transition-colors">
+        
+        <!-- Header Text -->
+        <div class="text-center mb-6">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-teal-50 dark:bg-teal-950/60 border border-teal-100 dark:border-teal-900 text-teal-700 dark:text-teal-400 mb-3 shadow-2xs">
+            <i data-lucide="user-plus" class="w-6 h-6"></i>
+          </div>
+          <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white font-sans" data-i18n="signup.heading">Create Patient Account</h1>
+          <p class="text-sm text-slate-500 dark:text-slate-400 mt-1" data-i18n="signup.subheading">Register to receive continuous AI clinical guidance for your prescriptions.</p>
+        </div>
+
+        <!-- Error Alert Container -->
+        <div id="errorAlert" class="hidden mb-5 p-3.5 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900 text-rose-800 dark:text-rose-300 text-xs sm:text-sm flex items-start gap-2.5" role="alert">
+          <i data-lucide="alert-circle" class="w-5 h-5 text-rose-600 dark:text-rose-400 flex-shrink-0 mt-0.5"></i>
+          <div class="flex-1">
+            <span id="errorMessage">Please complete all required fields.</span>
+          </div>
+        </div>
+
+        <!-- Registration Form -->
+        <form id="signupForm" class="space-y-4" novalidate>
+
+          <!-- Full Name -->
+          <div>
+            <label for="fullName" class="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
+              <span data-i18n="signup.fullname.label">Full Legal Name</span> <span class="text-rose-500">*</span>
+            </label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 rtl:left-auto rtl:right-0 pl-3.5 rtl:pl-0 rtl:pr-3.5 flex items-center pointer-events-none text-slate-400">
+                <i data-lucide="user" class="w-4 h-4"></i>
+              </div>
+              <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                required
+                placeholder="Sarah Jenkins"
+                data-i18n-placeholder="signup.fullname.placeholder"
+                class="w-full pl-10 rtl:pl-4 rtl:pr-10 pr-4 py-2.5 text-sm bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-teal-600 focus:ring-2 focus:ring-teal-500/20 transition-all"
+              />
+            </div>
+          </div>
+
+          <!-- Email Input -->
+          <div>
+            <label for="email" class="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
+              <span data-i18n="signup.email.label">Email Address</span> <span class="text-rose-500">*</span>
+            </label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 rtl:left-auto rtl:right-0 pl-3.5 rtl:pl-0 rtl:pr-3.5 flex items-center pointer-events-none text-slate-400">
+                <i data-lucide="mail" class="w-4 h-4"></i>
+              </div>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                autocomplete="email"
+                required
+                placeholder="sarah.jenkins@example.com"
+                data-i18n-placeholder="signup.email.placeholder"
+                class="w-full pl-10 rtl:pl-4 rtl:pr-10 pr-4 py-2.5 text-sm bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-teal-600 focus:ring-2 focus:ring-teal-500/20 transition-all"
+              />
+            </div>
+          </div>
+
+          <!-- Password Input -->
+          <div>
+            <label for="password" class="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
+              <span data-i18n="signup.password.label">Secure Password</span> <span class="text-rose-500">*</span>
+            </label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 rtl:left-auto rtl:right-0 pl-3.5 rtl:pl-0 rtl:pr-3.5 flex items-center pointer-events-none text-slate-400">
+                <i data-lucide="lock" class="w-4 h-4"></i>
+              </div>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                autocomplete="new-password"
+                required
+                placeholder="Minimum 8 characters"
+                data-i18n-placeholder="signup.password.placeholder"
+                class="w-full pl-10 rtl:pl-11 rtl:pr-10 pr-11 py-2.5 text-sm bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-teal-600 focus:ring-2 focus:ring-teal-500/20 transition-all"
+              />
+              <button
+                type="button"
+                data-toggle-password="password"
+                aria-label="Show password"
+                class="absolute inset-y-0 right-0 rtl:right-auto rtl:left-0 pr-3.5 rtl:pr-0 rtl:pl-3.5 flex items-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 focus:outline-none"
+              >
+                <i data-lucide="eye" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+            <!-- Password Strength Bar -->
+            <div class="mt-2 space-y-1.5">
+              <div class="flex items-center justify-between text-xs">
+                <span class="text-slate-500 dark:text-slate-400 text-[11px]" data-i18n="signup.strength.label">Security Strength:</span>
+                <span id="passwordStrengthText" class="font-semibold text-slate-400 text-[11px]">--</span>
+              </div>
+              <div class="w-full h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                <div id="passwordStrengthBar" class="h-full w-0 transition-all duration-300 rounded-full"></div>
+              </div>
+            </div>
+
+            <!-- Criteria Checklist -->
+            <div class="grid grid-cols-2 gap-1.5 mt-2.5 text-[11px] text-slate-400">
+              <div id="req-length" class="flex items-center gap-1">
+                <i data-lucide="check" class="w-3 h-3"></i> <span data-i18n="signup.req.length">8+ characters</span>
+              </div>
+              <div id="req-upper" class="flex items-center gap-1">
+                <i data-lucide="check" class="w-3 h-3"></i> <span data-i18n="signup.req.upper">Uppercase letter</span>
+              </div>
+              <div id="req-number" class="flex items-center gap-1">
+                <i data-lucide="check" class="w-3 h-3"></i> <span data-i18n="signup.req.number">Number</span>
+              </div>
+              <div id="req-special" class="flex items-center gap-1">
+                <i data-lucide="check" class="w-3 h-3"></i> <span data-i18n="signup.req.special">Special symbol</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Consent Checkbox -->
+          <div class="pt-2">
+            <label class="flex items-start gap-2.5 cursor-pointer select-none">
+              <input type="checkbox" id="termsCheckbox" required class="mt-0.5 w-4 h-4 rounded border-slate-300 text-teal-700 focus:ring-teal-500 dark:bg-slate-800 dark:border-slate-700" />
+              <span class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed" data-i18n="signup.terms">
+                I agree to the Health Data Privacy Notice & Terms of Clinical AI Consultation.
+              </span>
+            </label>
+          </div>
+
+          <!-- Submit Button -->
+          <button
+            type="submit"
+            id="submitBtn"
+            class="w-full mt-2 py-3 px-4 rounded-xl bg-teal-700 hover:bg-teal-800 active:bg-teal-900 text-white font-semibold text-sm shadow-sm hover:shadow transition-all flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
+          >
+            <i data-lucide="loader-2" id="submitSpinner" class="w-4 h-4 animate-spin hidden"></i>
+            <span id="submitText" data-i18n="signup.btn">Create Account & Start Intake</span>
+          </button>
+        </form>
+
+        <!-- Sign In Link -->
+        <div class="mt-6 text-center text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+          <span data-i18n="signup.has_account">Already have a patient account?</span>
+          <a href="login.html" class="font-semibold text-teal-700 dark:text-teal-400 hover:text-teal-800 hover:underline ml-1" data-i18n="signup.signin_link">
+            Sign In
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Security Footnote -->
+      <div class="mt-6 text-center space-y-2">
+        <p class="text-[11px] text-slate-500 dark:text-slate-400 flex items-center justify-center gap-1">
+          <i data-lucide="lock" class="w-3 h-3 text-teal-700 dark:text-teal-400"></i>
+          <span data-i18n="footer.security">Your clinical intake data is encrypted per session and never shared with third parties.</span>
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="w-full py-4 text-center border-t border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs text-slate-500 dark:text-slate-400 transition-colors">
+    <div class="max-w-7xl mx-auto px-4">
+      <p data-i18n="footer.disclaimer">AuraMed AI provides clinical information, not formal diagnoses. In emergencies, call 911 immediately.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/i18n.js"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

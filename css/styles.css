@@ -1,0 +1,284 @@
+/* ==========================================================================
+   AuraMed AI - Global Clinical Design System Styles
+   Theme, Internationalization (RTL/LTR), Dark Mode & Accessibility
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-arabic: 'Cairo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Primary Clinical Colors */
+  --color-primary-50: #f0fdfa;
+  --color-primary-100: #ccfbf1;
+  --color-primary-500: #14b8a6;
+  --color-primary-600: #0d9488;
+  --color-primary-700: #0f766e;
+  --color-primary-800: #115e59;
+  
+  /* Light Neutral Gradients */
+  --bg-app: #f8fafc;
+  --surface-card: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --border-subtle: #e2e8f0;
+}
+
+/* Dark Mode Variables */
+html.dark {
+  --bg-app: #090d16;
+  --surface-card: #111827;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #64748b;
+  --border-subtle: #1e293b;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+html.dark body {
+  background-color: #090d16;
+  color: #f8fafc;
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: var(--font-sans);
+}
+
+/* --------------------------------------------------------------------------
+   Arabic Typography & RTL Enhancements
+   -------------------------------------------------------------------------- */
+html[dir="rtl"],
+html[lang="ar"],
+.lang-ar {
+  font-family: var(--font-arabic), var(--font-sans);
+}
+
+html[dir="rtl"] h1,
+html[dir="rtl"] h2,
+html[dir="rtl"] h3,
+html[dir="rtl"] h4,
+html[dir="rtl"] h5,
+html[dir="rtl"] h6 {
+  font-family: var(--font-arabic), var(--font-sans);
+  letter-spacing: normal !important;
+}
+
+html[dir="rtl"] #a11yModalTrigger {
+  left: auto;
+  right: 1.25rem;
+}
+
+/* Smooth Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Pulse animation for AI thinking indicator */
+@keyframes clinicalPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+.animate-pulse-dot-1 {
+  animation: clinicalPulse 1.4s infinite ease-in-out;
+}
+.animate-pulse-dot-2 {
+  animation: clinicalPulse 1.4s infinite ease-in-out 0.2s;
+}
+.animate-pulse-dot-3 {
+  animation: clinicalPulse 1.4s infinite ease-in-out 0.4s;
+}
+
+/* Glowing breath animation */
+@keyframes breathGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(13, 148, 136, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(13, 148, 136, 0);
+  }
+}
+
+.animate-breath {
+  animation: breathGlow 2.5s infinite;
+}
+
+/* Chat bubble transitions */
+.message-enter {
+  animation: messageSlideUp 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes messageSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Modal fade & scale */
+.modal-overlay-enter {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+.modal-card-enter {
+  animation: scaleUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Focus styling */
+input:focus, select:focus, textarea:focus, button:focus-visible {
+  outline: none;
+}
+
+/* Prose inside medical messages */
+.ai-prose h3 {
+  font-weight: 700;
+  margin-top: 0.75rem;
+  margin-bottom: 0.35rem;
+}
+.ai-prose h4 {
+  font-weight: 600;
+  margin-top: 0.75rem;
+  margin-bottom: 0.25rem;
+  font-size: 0.95rem;
+}
+
+.ai-prose p {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.ai-prose ul, .ai-prose ol {
+  padding-left: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+html[dir="rtl"] .ai-prose ul,
+html[dir="rtl"] .ai-prose ol {
+  padding-left: 0;
+  padding-right: 1.25rem;
+}
+
+.ai-prose li {
+  margin-bottom: 0.25rem;
+}
+
+.ai-prose strong {
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   Accessibility Suite Overrides
+   -------------------------------------------------------------------------- */
+/* Font Size Scaling */
+html.a11y-text-large {
+  font-size: 115% !important;
+}
+
+html.a11y-text-xlarge {
+  font-size: 130% !important;
+}
+
+/* High Contrast Mode */
+html.a11y-high-contrast {
+  filter: contrast(135%);
+}
+html.a11y-high-contrast body {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+html.a11y-high-contrast .bg-white,
+html.a11y-high-contrast .bg-slate-50,
+html.a11y-high-contrast .bg-slate-100 {
+  background-color: #111111 !important;
+  color: #ffffff !important;
+  border-color: #444444 !important;
+}
+
+/* Monochrome Grayscale Mode */
+html.a11y-monochrome {
+  filter: grayscale(100%);
+}
+
+/* Dyslexia-Friendly Font Mode */
+body.a11y-dyslexic,
+body.a11y-dyslexic * {
+  font-family: 'Comic Sans MS', 'Arial Rounded MT Bold', sans-serif !important;
+  letter-spacing: 0.05em !important;
+  line-height: 1.8 !important;
+}
+
+/* Enhanced Line Spacing */
+body.a11y-enhanced-spacing * {
+  line-height: 2 !important;
+  letter-spacing: 0.06em !important;
+}
+
+/* Highlight Links & Focus */
+body.a11y-highlight-links a,
+body.a11y-highlight-links button {
+  text-decoration: underline !important;
+  outline: 2px solid #0d9488 !important;
+  outline-offset: 2px !important;
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  #a11yModalTrigger, #a11yModal, .no-print {
+    display: none !important;
+  }
+}
