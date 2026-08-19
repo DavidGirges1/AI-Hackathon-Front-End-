@@ -527,31 +527,31 @@ const AppSettings = {
     const trigger = document.createElement('button');
     trigger.id = 'a11yModalTrigger';
     trigger.type = 'button';
-    trigger.className = 'fixed bottom-5 left-5 z-40 w-11 h-11 rounded-full bg-teal-700 hover:bg-teal-800 text-white shadow-lg flex items-center justify-center transition-all hover:scale-105 focus:outline-none focus:ring-2 focus:ring-teal-400 dark:bg-teal-600 dark:hover:bg-teal-700';
+    trigger.className = 'fixed bottom-5 left-5 z-40 w-11 h-11 rounded-full bg-[#5B65DC] hover:bg-[#4A54CA] text-white shadow-lg flex items-center justify-center transition-all hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#8F9AF0] dark:bg-[#5B65DC] dark:hover:bg-[#6B75E6]';
     trigger.setAttribute('aria-label', 'Accessibility Options');
     trigger.setAttribute('title', 'Accessibility Toolbar');
     trigger.innerHTML = `<i data-lucide="accessibility" class="w-5 h-5"></i>`;
 
     const modal = document.createElement('div');
     modal.id = 'a11yModal';
-    modal.className = 'hidden fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-xs flex items-center justify-center p-4 modal-overlay-enter';
+    modal.className = 'hidden fixed inset-0 z-50 bg-[#122056]/50 backdrop-blur-xs flex items-center justify-center p-4 modal-overlay-enter';
     modal.setAttribute('role', 'dialog');
     modal.setAttribute('aria-modal', 'true');
     modal.setAttribute('aria-labelledby', 'a11yModalTitle');
 
     modal.innerHTML = `
-      <div class="bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-2xl max-w-md w-full p-5 sm:p-6 modal-card-enter">
-        <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+      <div class="bg-white dark:bg-[#111736] text-[#122056] dark:text-[#FAFAFD] rounded-2xl border border-[#E3E5F8] dark:border-[#1E285C] shadow-2xl max-w-md w-full p-5 sm:p-6 modal-card-enter">
+        <div class="flex items-center justify-between pb-3 border-b border-[#E3E5F8] dark:border-[#1E285C]">
           <div class="flex items-center gap-2.5">
-            <div class="w-8 h-8 rounded-xl bg-teal-50 dark:bg-teal-950/60 text-teal-700 dark:text-teal-400 flex items-center justify-center">
+            <div class="w-8 h-8 rounded-xl bg-[#EEEFFD] dark:bg-[#1C2555] text-[#5B65DC] dark:text-[#8F9AF0] flex items-center justify-center">
               <i data-lucide="accessibility" class="w-4 h-4"></i>
             </div>
             <div>
               <h3 id="a11yModalTitle" class="text-sm font-bold font-sans" data-i18n="a11y.title">Accessibility Options</h3>
-              <p class="text-[11px] text-slate-500 dark:text-slate-400" data-i18n="a11y.subtitle">Customize your visual & reading preferences</p>
+              <p class="text-[11px] text-[#47547E] dark:text-[#BAC4E6]" data-i18n="a11y.subtitle">Customize your visual & reading preferences</p>
             </div>
           </div>
-          <button type="button" id="closeA11yBtn" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Close">
+          <button type="button" id="closeA11yBtn" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-[#1C2555]" aria-label="Close">
             <i data-lucide="x" class="w-4 h-4"></i>
           </button>
         </div>
@@ -560,13 +560,13 @@ const AppSettings = {
           <div>
             <span class="font-semibold block mb-1.5" data-i18n="a11y.font_size">Text Size</span>
             <div class="grid grid-cols-3 gap-1.5">
-              <button type="button" data-a11y-action="font-normal" class="py-2 px-2.5 rounded-xl border border-slate-200 dark:border-slate-700 font-medium hover:border-teal-500 transition-colors text-center text-xs">
+              <button type="button" data-a11y-action="font-normal" class="py-2 px-2.5 rounded-xl border border-[#E3E5F8] dark:border-[#1E285C] font-medium hover:border-[#5B65DC] transition-colors text-center text-xs">
                 A (Default)
               </button>
-              <button type="button" data-a11y-action="font-large" class="py-2 px-2.5 rounded-xl border border-slate-200 dark:border-slate-700 font-medium hover:border-teal-500 transition-colors text-center text-sm font-bold">
+              <button type="button" data-a11y-action="font-large" class="py-2 px-2.5 rounded-xl border border-[#E3E5F8] dark:border-[#1E285C] font-medium hover:border-[#5B65DC] transition-colors text-center text-sm font-bold">
                 A+ (+15%)
               </button>
-              <button type="button" data-a11y-action="font-xlarge" class="py-2 px-2.5 rounded-xl border border-slate-200 dark:border-slate-700 font-medium hover:border-teal-500 transition-colors text-center text-base font-extrabold">
+              <button type="button" data-a11y-action="font-xlarge" class="py-2 px-2.5 rounded-xl border border-[#E3E5F8] dark:border-[#1E285C] font-medium hover:border-[#5B65DC] transition-colors text-center text-base font-extrabold">
                 A++ (+30%)
               </button>
             </div>
@@ -575,46 +575,46 @@ const AppSettings = {
           <div>
             <span class="font-semibold block mb-1.5" data-i18n="a11y.contrast">Visual Contrast</span>
             <div class="grid grid-cols-3 gap-1.5">
-              <button type="button" data-a11y-action="contrast-normal" class="py-2 px-2 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-teal-500 transition-colors text-center">
+              <button type="button" data-a11y-action="contrast-normal" class="py-2 px-2 rounded-xl border border-[#E3E5F8] dark:border-[#1E285C] hover:border-[#5B65DC] transition-colors text-center">
                 Standard
               </button>
-              <button type="button" data-a11y-action="contrast-high" class="py-2 px-2 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-teal-500 transition-colors text-center font-bold">
+              <button type="button" data-a11y-action="contrast-high" class="py-2 px-2 rounded-xl border border-[#E3E5F8] dark:border-[#1E285C] hover:border-[#5B65DC] transition-colors text-center font-bold">
                 High Contrast
               </button>
-              <button type="button" data-a11y-action="contrast-mono" class="py-2 px-2 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-teal-500 transition-colors text-center">
+              <button type="button" data-a11y-action="contrast-mono" class="py-2 px-2 rounded-xl border border-[#E3E5F8] dark:border-[#1E285C] hover:border-[#5B65DC] transition-colors text-center">
                 Monochrome
               </button>
             </div>
           </div>
 
-          <div class="space-y-2 pt-1 border-t border-slate-100 dark:border-slate-800">
-            <label class="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer">
+          <div class="space-y-2 pt-1 border-t border-[#E3E5F8] dark:border-[#1E285C]">
+            <label class="flex items-center justify-between p-2 rounded-xl hover:bg-[#EEEFFD]/50 dark:hover:bg-[#1C2555]/50 cursor-pointer">
               <span class="font-medium" data-i18n="a11y.dyslexia">Dyslexia Friendly Font</span>
-              <input type="checkbox" id="a11yDyslexiaToggle" class="rounded text-teal-600 focus:ring-teal-500 w-4 h-4" />
+              <input type="checkbox" id="a11yDyslexiaToggle" class="rounded text-[#5B65DC] focus:ring-[#5B65DC] w-4 h-4" />
             </label>
 
-            <label class="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer">
+            <label class="flex items-center justify-between p-2 rounded-xl hover:bg-[#EEEFFD]/50 dark:hover:bg-[#1C2555]/50 cursor-pointer">
               <span class="font-medium" data-i18n="a11y.line_spacing">Enhanced Line Spacing</span>
-              <input type="checkbox" id="a11ySpacingToggle" class="rounded text-teal-600 focus:ring-teal-500 w-4 h-4" />
+              <input type="checkbox" id="a11ySpacingToggle" class="rounded text-[#5B65DC] focus:ring-[#5B65DC] w-4 h-4" />
             </label>
 
-            <label class="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer">
+            <label class="flex items-center justify-between p-2 rounded-xl hover:bg-[#EEEFFD]/50 dark:hover:bg-[#1C2555]/50 cursor-pointer">
               <span class="font-medium" data-i18n="a11y.highlight_links">Highlight Interactive Elements</span>
-              <input type="checkbox" id="a11yLinksToggle" class="rounded text-teal-600 focus:ring-teal-500 w-4 h-4" />
+              <input type="checkbox" id="a11yLinksToggle" class="rounded text-[#5B65DC] focus:ring-[#5B65DC] w-4 h-4" />
             </label>
 
-            <label class="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer">
+            <label class="flex items-center justify-between p-2 rounded-xl hover:bg-[#EEEFFD]/50 dark:hover:bg-[#1C2555]/50 cursor-pointer">
               <span class="font-medium" data-i18n="a11y.reading_guide">Reading Ruler Line</span>
-              <input type="checkbox" id="a11yGuideToggle" class="rounded text-teal-600 focus:ring-teal-500 w-4 h-4" />
+              <input type="checkbox" id="a11yGuideToggle" class="rounded text-[#5B65DC] focus:ring-[#5B65DC] w-4 h-4" />
             </label>
           </div>
         </div>
 
-        <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+        <div class="pt-3 border-t border-[#E3E5F8] dark:border-[#1E285C] flex items-center justify-between">
           <button type="button" id="a11yResetBtn" class="text-xs text-rose-600 dark:text-rose-400 hover:underline font-medium" data-i18n="a11y.reset">
             Reset Preferences
           </button>
-          <button type="button" id="closeA11yBtnBottom" class="px-4 py-2 rounded-xl bg-teal-700 hover:bg-teal-800 text-white text-xs font-semibold shadow-sm" data-i18n="a11y.close">
+          <button type="button" id="closeA11yBtnBottom" class="px-4 py-2 rounded-xl bg-[#5B65DC] hover:bg-[#4A54CA] text-white text-xs font-semibold shadow-sm" data-i18n="a11y.close">
             Done
           </button>
         </div>

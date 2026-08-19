@@ -280,15 +280,6 @@ function initLoginForm(form) {
   const submitBtn = document.getElementById('submitBtn');
   const submitSpinner = document.getElementById('submitSpinner');
   const submitText = document.getElementById('submitText');
-  const demoFillBtn = document.getElementById('demoFillBtn');
-
-  if (demoFillBtn) {
-    demoFillBtn.addEventListener('click', () => {
-      usernameInput.value = "davedelks1d@gmail.com";
-      passwordInput.value = "Password123!";
-      hideError();
-    });
-  }
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();

@@ -272,23 +272,23 @@ const MedicineUI = {
     if (this.countBadge) {
       this.countBadge.textContent = count;
       this.countBadge.className = count > 0 
-        ? "inline-flex items-center justify-center px-1.5 py-0.5 text-xs font-semibold rounded-full bg-teal-100 text-teal-800"
+        ? "inline-flex items-center justify-center px-2 py-0.5 text-xs font-semibold rounded-full bg-[#EEEFFD] text-[#5B65DC] dark:bg-[#1C2555] dark:text-[#8F9AF0]"
         : "hidden";
     }
 
     if (this.composerContextBadge) {
       if (count > 0) {
         this.composerContextBadge.innerHTML = `
-          <span class="w-2 h-2 rounded-full bg-teal-500 animate-pulse"></span>
-          <span class="text-xs font-medium text-teal-700">${count} Med${count > 1 ? 's' : ''} in Context</span>
+          <span class="w-2 h-2 rounded-full bg-[#5B65DC] animate-pulse"></span>
+          <span class="text-xs font-medium text-[#5B65DC] dark:text-[#8F9AF0]">${count} Med${count > 1 ? 's' : ''} in Context</span>
         `;
-        this.composerContextBadge.className = "flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-teal-50 border border-teal-200/80";
+        this.composerContextBadge.className = "flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#EEEFFD] dark:bg-[#1C2555] border border-[#E3E5F8] dark:border-[#1E285C]";
       } else {
         this.composerContextBadge.innerHTML = `
           <span class="w-2 h-2 rounded-full bg-slate-400"></span>
-          <span class="text-xs font-medium text-slate-500">No Meds in Context</span>
+          <span class="text-xs font-medium text-[#828EA8]">No Meds in Context</span>
         `;
-        this.composerContextBadge.className = "flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 border border-slate-200";
+        this.composerContextBadge.className = "flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-[#161E45] border border-slate-200 dark:border-[#1E285C]";
       }
     }
 
@@ -300,18 +300,18 @@ const MedicineUI = {
       // Insert chips before the add button
       this.activeMedicines.forEach(med => {
         const chip = document.createElement('div');
-        chip.className = "med-chip-item flex-shrink-0 group inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-white text-slate-800 border border-slate-200 shadow-sm hover:border-teal-400 hover:shadow transition-all animate-fadeIn";
+        chip.className = "med-chip-item flex-shrink-0 group inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-[#111736] text-[#122056] dark:text-[#FAFAFD] border border-[#E3E5F8] dark:border-[#1E285C] shadow-sm hover:border-[#5B65DC] hover:shadow transition-all animate-fadeIn";
         chip.title = `${med.name} ${med.dosage || ''} - ${med.frequency || ''}`;
         
         chip.innerHTML = `
-          <span class="text-teal-600 font-bold flex items-center">
+          <span class="text-[#5B65DC] dark:text-[#8F9AF0] font-bold flex items-center">
             <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
             </svg>
             ${med.name}
           </span>
-          ${med.dosage ? `<span class="text-slate-500 font-normal">${med.dosage}</span>` : ''}
-          <button type="button" class="remove-med-btn text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-full p-0.5 transition-colors focus:outline-none focus:ring-1 focus:ring-rose-400" aria-label="Remove ${med.name}">
+          ${med.dosage ? `<span class="text-[#828EA8] font-normal">${med.dosage}</span>` : ''}
+          <button type="button" class="remove-med-btn text-[#828EA8] hover:text-rose-600 hover:bg-rose-50 rounded-full p-0.5 transition-colors focus:outline-none focus:ring-1 focus:ring-rose-400" aria-label="Remove ${med.name}">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
           </button>
         `;

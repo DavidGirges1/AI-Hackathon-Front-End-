@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title data-i18n="login.title">Sign In | AuraMed AI</title>
   
-  <!-- Tailwind CSS CDN with Dark Mode Support -->
+  <!-- Tailwind CSS CDN with Custom Palette & Dark Mode Support -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -13,15 +13,17 @@
       theme: {
         extend: {
           colors: {
-            teal: {
-              50: '#f0fdfa',
-              100: '#ccfbf1',
-              200: '#99f6e4',
-              500: '#14b8a6',
-              600: '#0d9488',
-              700: '#0f766e',
-              800: '#115e59',
-              900: '#134e4a',
+            brand: {
+              navy: '#122056',
+              accent: '#5B65DC',
+              accentHover: '#4A54CA',
+              light: '#EEEFFD',
+              bg: '#FAFAFD',
+              surface: '#FFFFFF',
+              darkBg: '#090D1F',
+              darkSurface: '#111736',
+              darkCard: '#161E45',
+              darkBorder: '#1E285C'
             }
           },
           fontFamily: {
@@ -42,36 +44,36 @@
   <!-- Custom Styles -->
   <link rel="stylesheet" href="css/styles.css" />
 </head>
-<body class="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col justify-between selection:bg-teal-100 selection:text-teal-900 transition-colors duration-200">
+<body class="min-h-screen bg-[#FAFAFD] dark:bg-[#090D1F] text-[#122056] dark:text-[#FAFAFD] flex flex-col justify-between selection:bg-[#EEEFFD] selection:text-[#122056] transition-colors duration-200">
 
   <!-- Header with Brand & Controls (Theme, Language) -->
-  <header class="w-full border-b border-slate-200/80 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md sticky top-0 z-30 transition-colors">
+  <header class="w-full border-b border-[#E3E5F8] dark:border-[#1E285C] bg-white/90 dark:bg-[#111736]/90 backdrop-blur-md sticky top-0 z-30 transition-colors">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       
       <!-- Brand Logo -->
-      <a href="login.html" class="flex items-center gap-2.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 rounded-lg p-1">
-        <div class="w-9 h-9 rounded-xl bg-teal-700 text-white flex items-center justify-center shadow-sm group-hover:bg-teal-800 transition-colors">
+      <a href="index.html" class="flex items-center gap-2.5 group focus:outline-none rounded-lg p-1">
+        <div class="w-9 h-9 rounded-xl bg-[#5B65DC] text-white flex items-center justify-center shadow-sm group-hover:bg-[#4A54CA] transition-colors">
           <i data-lucide="cross" class="w-5 h-5"></i>
         </div>
         <div class="flex flex-col">
-          <span class="text-base font-bold tracking-tight text-slate-900 dark:text-white leading-tight font-sans">
-            <span data-i18n="brand.name">AuraMed</span><span class="text-teal-700 dark:text-teal-400" data-i18n="brand.suffix">AI</span>
+          <span class="text-base font-bold tracking-tight text-[#122056] dark:text-white leading-tight font-sans">
+            <span data-i18n="brand.name">AuraMed</span><span class="text-[#5B65DC] dark:text-[#8F9AF0]" data-i18n="brand.suffix">AI</span>
           </span>
-          <span class="text-[10px] font-semibold text-slate-500 dark:text-slate-400 tracking-wider uppercase" data-i18n="brand.tagline">Clinical Assistant</span>
+          <span class="text-[10px] font-semibold text-[#47547E] dark:text-[#BAC4E6] tracking-wider uppercase hidden sm:inline" data-i18n="brand.tagline">Clinical Assistant</span>
         </div>
       </a>
 
-      <!-- Navbar Right Controls (Lang, Theme, Security Badge) -->
+      <!-- Navbar Right Controls -->
       <div class="flex items-center gap-2 sm:gap-3">
         
-        <!-- Language Switcher Button (EN / AR) -->
+        <!-- Language Switcher Button -->
         <button
           type="button"
           data-action="toggle-lang"
-          class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-teal-500"
+          class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-[#EEEFFD] dark:bg-[#1C2555] hover:bg-[#E3E5F8] dark:hover:bg-[#252E63] text-[#122056] dark:text-[#FAFAFD] border border-[#E3E5F8] dark:border-[#1E285C] transition-colors focus:outline-none"
           title="Switch Language / تبديل اللغة"
         >
-          <i data-lucide="globe" class="w-3.5 h-3.5 text-teal-600 dark:text-teal-400"></i>
+          <i data-lucide="globe" class="w-3.5 h-3.5 text-[#5B65DC] dark:text-[#8F9AF0]"></i>
           <span class="lang-label">العربية</span>
         </button>
 
@@ -79,7 +81,7 @@
         <button
           type="button"
           data-action="toggle-theme"
-          class="p-2 rounded-full text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-teal-500"
+          class="p-2 rounded-full text-[#47547E] hover:text-[#122056] dark:text-[#BAC4E6] dark:hover:text-white bg-[#EEEFFD] dark:bg-[#1C2555] hover:bg-[#E3E5F8] dark:hover:bg-[#252E63] border border-[#E3E5F8] dark:border-[#1E285C] transition-colors focus:outline-none"
           aria-label="Toggle Dark Mode"
           title="Toggle Dark Mode"
         >
@@ -87,8 +89,8 @@
         </button>
 
         <!-- Security / Trust Indicator -->
-        <div class="hidden md:flex items-center gap-2 text-xs font-medium text-slate-600 dark:text-slate-300 bg-slate-100/80 dark:bg-slate-800/80 px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-700">
-          <i data-lucide="shield-check" class="w-4 h-4 text-teal-700 dark:text-teal-400"></i>
+        <div class="hidden md:flex items-center gap-2 text-xs font-medium text-[#47547E] dark:text-[#BAC4E6] bg-[#EEEFFD]/80 dark:bg-[#1C2555]/80 px-3 py-1.5 rounded-full border border-[#E3E5F8] dark:border-[#1E285C]">
+          <i data-lucide="shield-check" class="w-4 h-4 text-[#5B65DC] dark:text-[#8F9AF0]"></i>
           <span data-i18n="nav.security">256-Bit Encrypted Clinical Session</span>
         </div>
 
@@ -102,15 +104,15 @@
     <div class="w-full max-w-md">
 
       <!-- Card Container -->
-      <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm sm:shadow-md p-6 sm:p-8 transition-colors">
+      <div class="bg-white dark:bg-[#111736] rounded-2xl border border-[#E3E5F8] dark:border-[#1E285C] shadow-sm sm:shadow-md p-6 sm:p-8 transition-colors">
         
         <!-- Header Text -->
         <div class="text-center mb-8">
-          <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-teal-50 dark:bg-teal-950/60 border border-teal-100 dark:border-teal-900 text-teal-700 dark:text-teal-400 mb-4 shadow-2xs">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#EEEFFD] dark:bg-[#1C2555] border border-[#E3E5F8] dark:border-[#1E285C] text-[#5B65DC] dark:text-[#8F9AF0] mb-4 shadow-2xs">
             <i data-lucide="user-check" class="w-6 h-6"></i>
           </div>
-          <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white font-sans" data-i18n="login.heading">Welcome Back</h1>
-          <p class="text-sm text-slate-500 dark:text-slate-400 mt-1.5" data-i18n="login.subheading">Sign in to securely access your patient profile and medical AI assistant.</p>
+          <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-[#122056] dark:text-white font-sans" data-i18n="login.heading">Welcome Back</h1>
+          <p class="text-sm text-[#47547E] dark:text-[#BAC4E6] mt-1.5" data-i18n="login.subheading">Sign in to securely access your patient profile and medical AI assistant.</p>
         </div>
 
         <!-- Error Alert Container -->
@@ -126,11 +128,11 @@
 
           <!-- Username / Email Input -->
           <div>
-            <label for="username" class="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
+            <label for="username" class="block text-xs font-semibold uppercase tracking-wider text-[#122056] dark:text-[#BAC4E6] mb-1.5">
               <span data-i18n="login.email.label">Email Address or Patient ID</span> <span class="text-rose-500">*</span>
             </label>
             <div class="relative">
-              <div class="absolute inset-y-0 left-0 rtl:left-auto rtl:right-0 pl-3.5 rtl:pl-0 rtl:pr-3.5 flex items-center pointer-events-none text-slate-400">
+              <div class="absolute inset-y-0 left-0 rtl:left-auto rtl:right-0 pl-3.5 rtl:pl-0 rtl:pr-3.5 flex items-center pointer-events-none text-[#828EA8]">
                 <i data-lucide="mail" class="w-4 h-4"></i>
               </div>
               <input
@@ -141,7 +143,7 @@
                 required
                 placeholder="sarah.jenkins@example.com"
                 data-i18n-placeholder="login.email.placeholder"
-                class="w-full pl-10 rtl:pl-4 rtl:pr-10 pr-4 py-2.5 text-sm bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-teal-600 focus:ring-2 focus:ring-teal-500/20 transition-all"
+                class="w-full pl-10 rtl:pl-4 rtl:pr-10 pr-4 py-2.5 text-sm bg-white dark:bg-[#161E45] border border-[#E3E5F8] dark:border-[#1E285C] rounded-xl text-[#122056] dark:text-white placeholder:text-[#828EA8] focus:border-[#5B65DC] focus:ring-2 focus:ring-[#5B65DC]/20 transition-all"
               />
             </div>
           </div>
@@ -149,15 +151,15 @@
           <!-- Password Input -->
           <div>
             <div class="flex items-center justify-between mb-1.5">
-              <label for="password" class="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+              <label for="password" class="block text-xs font-semibold uppercase tracking-wider text-[#122056] dark:text-[#BAC4E6]">
                 <span data-i18n="login.password.label">Password</span> <span class="text-rose-500">*</span>
               </label>
-              <a href="#" onclick="alert('Password reset instructions will be sent to your email.'); return false;" class="text-xs font-medium text-teal-700 dark:text-teal-400 hover:text-teal-800 hover:underline" data-i18n="login.forgot">
+              <a href="#" onclick="alert('Password reset instructions will be sent to your email.'); return false;" class="text-xs font-medium text-[#5B65DC] dark:text-[#8F9AF0] hover:underline" data-i18n="login.forgot">
                 Forgot password?
               </a>
             </div>
             <div class="relative">
-              <div class="absolute inset-y-0 left-0 rtl:left-auto rtl:right-0 pl-3.5 rtl:pl-0 rtl:pr-3.5 flex items-center pointer-events-none text-slate-400">
+              <div class="absolute inset-y-0 left-0 rtl:left-auto rtl:right-0 pl-3.5 rtl:pl-0 rtl:pr-3.5 flex items-center pointer-events-none text-[#828EA8]">
                 <i data-lucide="lock" class="w-4 h-4"></i>
               </div>
               <input
@@ -168,13 +170,13 @@
                 required
                 placeholder="••••••••••••"
                 data-i18n-placeholder="login.password.placeholder"
-                class="w-full pl-10 rtl:pl-11 rtl:pr-10 pr-11 py-2.5 text-sm bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-teal-600 focus:ring-2 focus:ring-teal-500/20 transition-all"
+                class="w-full pl-10 rtl:pl-11 rtl:pr-10 pr-11 py-2.5 text-sm bg-white dark:bg-[#161E45] border border-[#E3E5F8] dark:border-[#1E285C] rounded-xl text-[#122056] dark:text-white placeholder:text-[#828EA8] focus:border-[#5B65DC] focus:ring-2 focus:ring-[#5B65DC]/20 transition-all"
               />
               <button
                 type="button"
                 data-toggle-password="password"
                 aria-label="Show password"
-                class="absolute inset-y-0 right-0 rtl:right-auto rtl:left-0 pr-3.5 rtl:pr-0 rtl:pl-3.5 flex items-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 focus:outline-none"
+                class="absolute inset-y-0 right-0 rtl:right-auto rtl:left-0 pr-3.5 rtl:pr-0 rtl:pl-3.5 flex items-center text-[#828EA8] hover:text-[#122056] dark:hover:text-white focus:outline-none"
               >
                 <i data-lucide="eye" class="w-4 h-4"></i>
               </button>
@@ -184,8 +186,8 @@
           <!-- Remember Me Checkbox -->
           <div class="flex items-center justify-between pt-1">
             <label class="flex items-center gap-2 cursor-pointer select-none">
-              <input type="checkbox" id="rememberMe" class="w-4 h-4 rounded border-slate-300 text-teal-700 focus:ring-teal-500 focus:ring-offset-0 dark:bg-slate-800 dark:border-slate-700" />
-              <span class="text-xs text-slate-600 dark:text-slate-400" data-i18n="login.remember">Remember my secure session</span>
+              <input type="checkbox" id="rememberMe" class="w-4 h-4 rounded border-[#E3E5F8] text-[#5B65DC] focus:ring-[#5B65DC] dark:bg-[#161E45] dark:border-[#1E285C]" />
+              <span class="text-xs text-[#47547E] dark:text-[#BAC4E6]" data-i18n="login.remember">Remember my secure session</span>
             </label>
           </div>
 
@@ -193,39 +195,27 @@
           <button
             type="submit"
             id="submitBtn"
-            class="w-full mt-2 py-3 px-4 rounded-xl bg-teal-700 hover:bg-teal-800 active:bg-teal-900 text-white font-semibold text-sm shadow-sm hover:shadow transition-all flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
+            class="w-full mt-2 py-3 px-4 rounded-xl bg-[#5B65DC] hover:bg-[#4A54CA] active:bg-[#3B45B5] text-white font-semibold text-sm shadow-sm hover:shadow transition-all flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#5B65DC] focus:ring-offset-2"
           >
             <i data-lucide="loader-2" id="submitSpinner" class="w-4 h-4 animate-spin hidden"></i>
             <span id="submitText" data-i18n="login.btn">Sign In</span>
           </button>
         </form>
 
-        <!-- Demo Helper Action -->
-        <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800 flex justify-center">
-          <button
-            type="button"
-            id="demoFillBtn"
-            class="inline-flex items-center gap-1.5 text-xs text-teal-700 dark:text-teal-400 hover:text-teal-800 bg-teal-50 dark:bg-teal-950/60 hover:bg-teal-100/80 px-3 py-1.5 rounded-lg font-medium transition-colors"
-          >
-            <i data-lucide="zap" class="w-3.5 h-3.5"></i>
-            <span data-i18n="login.demo.btn">Fill Demo Credentials (Sarah Jenkins)</span>
-          </button>
-        </div>
-
         <!-- Registration Link -->
-        <div class="mt-6 text-center text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+        <div class="mt-6 text-center text-xs sm:text-sm text-[#47547E] dark:text-[#BAC4E6]">
           <span data-i18n="login.no_account">Don't have an account yet?</span>
-          <a href="signup.html" class="font-semibold text-teal-700 dark:text-teal-400 hover:text-teal-800 hover:underline ml-1" data-i18n="login.signup_link">
+          <a href="signup.html" class="font-semibold text-[#5B65DC] dark:text-[#8F9AF0] hover:underline ml-1" data-i18n="login.signup_link">
             Create a Patient Account
           </a>
         </div>
 
       </div>
 
-      <!-- HIPAA / Security Footnote -->
+      <!-- Security Footnote -->
       <div class="mt-6 text-center space-y-2">
-        <p class="text-[11px] text-slate-500 dark:text-slate-400 flex items-center justify-center gap-1">
-          <i data-lucide="lock" class="w-3 h-3 text-teal-700 dark:text-teal-400"></i>
+        <p class="text-[11px] text-[#47547E] dark:text-[#BAC4E6] flex items-center justify-center gap-1">
+          <i data-lucide="lock" class="w-3 h-3 text-[#5B65DC] dark:text-[#8F9AF0]"></i>
           <span data-i18n="footer.security">Your clinical intake data is encrypted per session and never shared with third parties.</span>
         </p>
       </div>
@@ -234,7 +224,7 @@
   </main>
 
   <!-- Global Footer -->
-  <footer class="w-full py-4 text-center border-t border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs text-slate-500 dark:text-slate-400 transition-colors">
+  <footer class="w-full py-4 text-center border-t border-[#E3E5F8] dark:border-[#1E285C] bg-white dark:bg-[#111736] text-xs text-[#47547E] dark:text-[#BAC4E6] transition-colors">
     <div class="max-w-7xl mx-auto px-4">
       <p data-i18n="footer.disclaimer">AuraMed AI provides clinical information, not formal diagnoses. In emergencies, call 911 immediately.</p>
     </div>

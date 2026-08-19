@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title data-i18n="assistant.title">Medical AI Assistant | AuraMed AI</title>
   
-  <!-- Tailwind CSS CDN with Dark Mode Support -->
+  <!-- Tailwind CSS CDN with Custom Palette & Dark Mode Support -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -13,15 +13,17 @@
       theme: {
         extend: {
           colors: {
-            teal: {
-              50: '#f0fdfa',
-              100: '#ccfbf1',
-              200: '#99f6e4',
-              500: '#14b8a6',
-              600: '#0d9488',
-              700: '#0f766e',
-              800: '#115e59',
-              900: '#134e4a',
+            brand: {
+              navy: '#122056',
+              accent: '#5B65DC',
+              accentHover: '#4A54CA',
+              light: '#EEEFFD',
+              bg: '#FAFAFD',
+              surface: '#FFFFFF',
+              darkBg: '#090D1F',
+              darkSurface: '#111736',
+              darkCard: '#161E45',
+              darkBorder: '#1E285C'
             }
           },
           fontFamily: {
@@ -42,25 +44,25 @@
   <!-- Custom Styles -->
   <link rel="stylesheet" href="css/styles.css" />
 </head>
-<body class="h-screen flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 overflow-hidden selection:bg-teal-100 selection:text-teal-900 transition-colors duration-200">
+<body class="h-screen flex flex-col bg-[#FAFAFD] dark:bg-[#090D1F] text-[#122056] dark:text-[#FAFAFD] overflow-hidden selection:bg-[#EEEFFD] selection:text-[#122056] transition-colors duration-200">
 
   <!-- ===================================================================== -->
   <!-- Top Navigation Header -->
   <!-- ===================================================================== -->
-  <header class="w-full h-16 border-b border-slate-200/90 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md flex-shrink-0 z-30 px-2.5 sm:px-6 transition-colors overflow-x-hidden">
+  <header class="w-full h-16 border-b border-[#E3E5F8] dark:border-[#1E285C] bg-white/95 dark:bg-[#111736]/95 backdrop-blur-md flex-shrink-0 z-30 px-2.5 sm:px-6 transition-colors overflow-x-hidden">
     <div class="max-w-7xl mx-auto h-full flex items-center justify-between gap-1.5 sm:gap-4">
       
       <!-- Brand Identity -->
       <div class="flex items-center gap-1.5 sm:gap-3 flex-shrink-0">
-        <a href="assistant.html" class="flex items-center gap-2 group focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 rounded-lg p-0.5 sm:p-1">
-          <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-teal-700 text-white flex items-center justify-center shadow-sm group-hover:bg-teal-800 transition-colors flex-shrink-0">
+        <a href="assistant.html" class="flex items-center gap-2 group focus:outline-none rounded-lg p-0.5 sm:p-1">
+          <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#5B65DC] text-white flex items-center justify-center shadow-sm group-hover:bg-[#4A54CA] transition-colors flex-shrink-0">
             <i data-lucide="cross" class="w-4 h-4 sm:w-5 sm:h-5"></i>
           </div>
           <div class="flex flex-col">
-            <span class="text-sm sm:text-base font-bold tracking-tight text-slate-900 dark:text-white leading-tight font-sans">
-              <span data-i18n="brand.name">AuraMed</span><span class="text-teal-700 dark:text-teal-400" data-i18n="brand.suffix">AI</span>
+            <span class="text-sm sm:text-base font-bold tracking-tight text-[#122056] dark:text-white leading-tight font-sans">
+              <span data-i18n="brand.name">AuraMed</span><span class="text-[#5B65DC] dark:text-[#8F9AF0]" data-i18n="brand.suffix">AI</span>
             </span>
-            <span class="text-[9px] sm:text-[10px] font-semibold text-slate-500 dark:text-slate-400 tracking-wider uppercase hidden sm:inline" data-i18n="brand.tagline">Clinical Assistant</span>
+            <span class="text-[9px] sm:text-[10px] font-semibold text-[#47547E] dark:text-[#BAC4E6] tracking-wider uppercase hidden sm:inline" data-i18n="brand.tagline">Clinical Assistant</span>
           </div>
         </a>
       </div>
@@ -72,10 +74,10 @@
         <button
           type="button"
           data-action="toggle-lang"
-          class="flex items-center gap-1 px-2 sm:px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition-colors focus:outline-none flex-shrink-0"
+          class="flex items-center gap-1 px-2 sm:px-3 py-1.5 rounded-full text-xs font-semibold bg-[#EEEFFD] dark:bg-[#1C2555] hover:bg-[#E3E5F8] dark:hover:bg-[#252E63] text-[#122056] dark:text-[#FAFAFD] border border-[#E3E5F8] dark:border-[#1E285C] transition-colors focus:outline-none flex-shrink-0"
           title="Switch Language / تبديل اللغة"
         >
-          <i data-lucide="globe" class="w-3.5 h-3.5 text-teal-600 dark:text-teal-400"></i>
+          <i data-lucide="globe" class="w-3.5 h-3.5 text-[#5B65DC] dark:text-[#8F9AF0]"></i>
           <span class="lang-label hidden xs:inline sm:inline">العربية</span>
         </button>
 
@@ -83,7 +85,7 @@
         <button
           type="button"
           data-action="toggle-theme"
-          class="p-1.5 sm:p-2 rounded-full text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 transition-colors focus:outline-none flex-shrink-0"
+          class="p-1.5 sm:p-2 rounded-full text-[#47547E] hover:text-[#122056] dark:text-[#BAC4E6] dark:hover:text-white bg-[#EEEFFD] dark:bg-[#1C2555] hover:bg-[#E3E5F8] dark:hover:bg-[#252E63] border border-[#E3E5F8] dark:border-[#1E285C] transition-colors focus:outline-none flex-shrink-0"
           aria-label="Toggle Dark Mode"
           title="Toggle Dark Mode"
         >
@@ -95,28 +97,28 @@
           href="patient-form.html"
           id="patientSummaryPill"
           title="Click to view or edit patient profile"
-          class="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full bg-slate-100/90 dark:bg-slate-800 hover:bg-teal-50 dark:hover:bg-teal-950/60 border border-slate-200 dark:border-slate-700 hover:border-teal-300 transition-all text-xs group max-w-[120px] sm:max-w-xs truncate flex-shrink min-w-0"
+          class="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full bg-[#EEEFFD]/80 dark:bg-[#1C2555]/80 hover:bg-[#E3E5F8] dark:hover:bg-[#252E63] border border-[#E3E5F8] dark:border-[#1E285C] hover:border-[#5B65DC] transition-all text-xs group max-w-[120px] sm:max-w-xs truncate flex-shrink min-w-0"
         >
-          <div class="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-teal-700 text-white flex items-center justify-center font-bold text-[10px] sm:text-[11px] flex-shrink-0">
+          <div class="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#5B65DC] text-white flex items-center justify-center font-bold text-[10px] sm:text-[11px] flex-shrink-0">
             <i data-lucide="user" class="w-3 h-3 sm:w-3.5 sm:h-3.5"></i>
           </div>
           <div class="flex flex-col text-left rtl:text-right truncate min-w-0">
             <div class="flex items-center gap-1 truncate">
-              <span id="patientNameDisplay" class="font-bold text-slate-900 dark:text-slate-100 group-hover:text-teal-900 dark:group-hover:text-teal-300 truncate text-[11px] sm:text-xs">Patient</span>
+              <span id="patientNameDisplay" class="font-bold text-[#122056] dark:text-[#FAFAFD] group-hover:text-[#5B65DC] dark:group-hover:text-[#8F9AF0] truncate text-[11px] sm:text-xs">Patient</span>
               <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse flex-shrink-0"></span>
             </div>
-            <span id="patientSubtext" class="text-[9px] sm:text-[10px] text-slate-500 dark:text-slate-400 group-hover:text-teal-700 dark:group-hover:text-teal-400 hidden md:inline truncate">Active Session</span>
+            <span id="patientSubtext" class="text-[9px] sm:text-[10px] text-[#47547E] dark:text-[#BAC4E6] group-hover:text-[#5B65DC] dark:group-hover:text-[#8F9AF0] hidden md:inline truncate">Active Session</span>
           </div>
-          <i data-lucide="chevron-right" class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-slate-400 group-hover:text-teal-700 rtl:rotate-180 hidden sm:inline-block flex-shrink-0"></i>
+          <i data-lucide="chevron-right" class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-slate-400 group-hover:text-[#5B65DC] rtl:rotate-180 hidden sm:inline-block flex-shrink-0"></i>
         </a>
 
         <!-- Header Actions -->
-        <div class="flex items-center gap-0.5 sm:gap-1 border-l rtl:border-l-0 rtl:border-r border-slate-200 dark:border-slate-700 pl-1.5 rtl:pl-0 rtl:pr-1.5 sm:pl-2.5 rtl:sm:pr-2.5 flex-shrink-0">
+        <div class="flex items-center gap-0.5 sm:gap-1 border-l rtl:border-l-0 rtl:border-r border-[#E3E5F8] dark:border-[#1E285C] pl-1.5 rtl:pl-0 rtl:pr-1.5 sm:pl-2.5 rtl:sm:pr-2.5 flex-shrink-0">
           <!-- Print / Export Summary (Hidden on Small Phones) -->
           <button
             type="button"
             id="exportChatBtn"
-            class="hidden md:inline-flex p-1.5 sm:p-2 text-slate-500 dark:text-slate-400 hover:text-teal-700 dark:hover:text-teal-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors focus:outline-none"
+            class="hidden md:inline-flex p-1.5 sm:p-2 text-[#47547E] dark:text-[#BAC4E6] hover:text-[#5B65DC] dark:hover:text-[#8F9AF0] hover:bg-[#EEEFFD] dark:hover:bg-[#1C2555] rounded-xl transition-colors focus:outline-none"
             title="Export or Print Clinical Summary"
             data-i18n-title="nav.print"
           >
@@ -127,7 +129,7 @@
           <button
             type="button"
             id="clearChatBtn"
-            class="p-1.5 sm:p-2 text-slate-500 dark:text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 rounded-xl transition-colors focus:outline-none"
+            class="p-1.5 sm:p-2 text-[#47547E] dark:text-[#BAC4E6] hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 rounded-xl transition-colors focus:outline-none"
             title="Reset Conversation"
             data-i18n-title="nav.clear"
           >
@@ -139,7 +141,7 @@
             type="button"
             id="signOutBtn"
             onclick="AuthService.logoutUser();"
-            class="p-1.5 sm:p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors focus:outline-none cursor-pointer"
+            class="p-1.5 sm:p-2 text-[#47547E] dark:text-[#BAC4E6] hover:text-[#122056] dark:hover:text-white hover:bg-[#EEEFFD] dark:hover:bg-[#1C2555] rounded-xl transition-colors focus:outline-none cursor-pointer"
             title="Sign Out"
             data-i18n-title="nav.logout"
           >
@@ -155,17 +157,17 @@
   <!-- ===================================================================== -->
   <!-- Dedicated Medicine Context Bar (Sticky Context Anchor) -->
   <!-- ===================================================================== -->
-  <section class="w-full bg-slate-100/80 dark:bg-slate-900/80 border-b border-slate-200/90 dark:border-slate-800 py-2.5 px-4 sm:px-6 flex-shrink-0 z-20 transition-colors">
+  <section class="w-full bg-white/70 dark:bg-[#111736]/70 border-b border-[#E3E5F8] dark:border-[#1E285C] py-2.5 px-4 sm:px-6 flex-shrink-0 z-20 transition-colors">
     <div class="max-w-4xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
       
       <!-- Label & Badge -->
       <div class="flex items-center gap-2 flex-shrink-0">
-        <div class="flex items-center gap-1.5 text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider">
-          <i data-lucide="pill" class="w-4 h-4 text-teal-700 dark:text-teal-400"></i>
+        <div class="flex items-center gap-1.5 text-xs font-bold text-[#122056] dark:text-white uppercase tracking-wider">
+          <i data-lucide="pill" class="w-4 h-4 text-[#5B65DC] dark:text-[#8F9AF0]"></i>
           <span data-i18n="assistant.active_meds">Active Medications</span>
         </div>
-        <span id="medicineCountBadge" class="inline-flex items-center justify-center px-2 py-0.5 text-xs font-semibold rounded-full bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200">
-          3
+        <span id="medicineCountBadge" class="inline-flex items-center justify-center px-2 py-0.5 text-xs font-semibold rounded-full bg-[#EEEFFD] dark:bg-[#1C2555] text-[#5B65DC] dark:text-[#8F9AF0]">
+          0
         </span>
       </div>
 
@@ -173,7 +175,7 @@
       <div class="flex-1 flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 no-scrollbar" id="medicineChipsContainer">
         
         <!-- Empty State Label (shown if 0 meds) -->
-        <span id="medicineEmptyState" class="hidden text-xs text-slate-500 dark:text-slate-400 italic" data-i18n="assistant.no_meds">
+        <span id="medicineEmptyState" class="hidden text-xs text-[#828EA8] italic" data-i18n="assistant.no_meds">
           No active medications loaded. Click '+ Add Medicine' to inform AI.
         </span>
 
@@ -181,7 +183,7 @@
         <button
           type="button"
           id="openAddMedBtn"
-          class="flex-shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-teal-700 hover:bg-teal-800 text-white shadow-2xs transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500"
+          class="flex-shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-[#5B65DC] hover:bg-[#4A54CA] text-white shadow-2xs transition-colors focus:outline-none"
         >
           <i data-lucide="plus" class="w-3.5 h-3.5"></i>
           <span data-i18n="assistant.add_med_btn">Add Medicine</span>
@@ -209,14 +211,14 @@
 
     <!-- AI Thinking / Pulse Indicator (Hidden by default) -->
     <div id="typingIndicator" class="hidden flex items-center gap-3 pb-3 px-2 message-enter">
-      <div class="w-8 h-8 rounded-xl bg-teal-700 text-white flex items-center justify-center shadow-sm">
+      <div class="w-8 h-8 rounded-xl bg-[#5B65DC] text-white flex items-center justify-center shadow-sm">
         <i data-lucide="cross" class="w-4 h-4 animate-spin"></i>
       </div>
-      <div class="px-4 py-2.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-medium text-slate-600 dark:text-slate-300 flex items-center gap-2 shadow-sm">
+      <div class="px-4 py-2.5 rounded-2xl bg-white dark:bg-[#111736] border border-[#E3E5F8] dark:border-[#1E285C] text-xs font-medium text-[#122056] dark:text-[#BAC4E6] flex items-center gap-2 shadow-sm">
         <div class="flex items-center gap-1">
-          <span class="w-2 h-2 rounded-full bg-teal-600 dark:bg-teal-400 animate-pulse-dot-1"></span>
-          <span class="w-2 h-2 rounded-full bg-teal-600 dark:bg-teal-400 animate-pulse-dot-2"></span>
-          <span class="w-2 h-2 rounded-full bg-teal-600 dark:bg-teal-400 animate-pulse-dot-3"></span>
+          <span class="w-2 h-2 rounded-full bg-[#5B65DC] animate-pulse-dot-1"></span>
+          <span class="w-2 h-2 rounded-full bg-[#5B65DC] animate-pulse-dot-2"></span>
+          <span class="w-2 h-2 rounded-full bg-[#5B65DC] animate-pulse-dot-3"></span>
         </div>
         <span data-i18n="assistant.evaluating">Evaluating clinical profile & active medication interactions...</span>
       </div>
@@ -224,13 +226,13 @@
 
     <!-- Suggested Quick Clinical Prompts (Pills) -->
     <div class="flex-shrink-0 pt-1 pb-2 overflow-x-auto no-scrollbar flex items-center gap-2">
-      <span class="text-[11px] font-semibold text-slate-400 dark:text-slate-500 flex items-center gap-1 uppercase tracking-wider flex-shrink-0">
-        <i data-lucide="sparkles" class="w-3 h-3 text-teal-600 dark:text-teal-400"></i> <span data-i18n="assistant.suggestions_label">Suggestions:</span>
+      <span class="text-[11px] font-semibold text-[#828EA8] flex items-center gap-1 uppercase tracking-wider flex-shrink-0">
+        <i data-lucide="sparkles" class="w-3 h-3 text-[#5B65DC]"></i> <span data-i18n="assistant.suggestions_label">Suggestions:</span>
       </span>
       <button
         type="button"
         data-prompt-suggestion="Check potential interactions between my current medications and Ibuprofen / Advil."
-        class="flex-shrink-0 text-xs px-3 py-1 rounded-full bg-white dark:bg-slate-900 hover:bg-teal-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 hover:border-teal-300 dark:hover:border-teal-700 text-slate-700 dark:text-slate-300 hover:text-teal-800 dark:hover:text-teal-300 transition-colors font-medium shadow-2xs"
+        class="flex-shrink-0 text-xs px-3 py-1 rounded-full bg-white dark:bg-[#111736] hover:bg-[#EEEFFD] dark:hover:bg-[#1C2555] border border-[#E3E5F8] dark:border-[#1E285C] hover:border-[#5B65DC] text-[#122056] dark:text-[#BAC4E6] hover:text-[#5B65DC] transition-colors font-medium shadow-2xs"
         data-i18n="assistant.sugg1"
       >
         🔍 Check NSAID / Ibuprofen Interaction
@@ -238,7 +240,7 @@
       <button
         type="button"
         data-prompt-suggestion="What should I do if I accidentally missed my morning dose of Lisinopril?"
-        class="flex-shrink-0 text-xs px-3 py-1 rounded-full bg-white dark:bg-slate-900 hover:bg-teal-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 hover:border-teal-300 dark:hover:border-teal-700 text-slate-700 dark:text-slate-300 hover:text-teal-800 dark:hover:text-teal-300 transition-colors font-medium shadow-2xs"
+        class="flex-shrink-0 text-xs px-3 py-1 rounded-full bg-white dark:bg-[#111736] hover:bg-[#EEEFFD] dark:hover:bg-[#1C2555] border border-[#E3E5F8] dark:border-[#1E285C] hover:border-[#5B65DC] text-[#122056] dark:text-[#BAC4E6] hover:text-[#5B65DC] transition-colors font-medium shadow-2xs"
         data-i18n="assistant.sugg2"
       >
         ⏰ Missed Morning Dose Guidance
@@ -246,7 +248,7 @@
       <button
         type="button"
         data-prompt-suggestion="Are dizziness or mild cough known side effects of my active medications?"
-        class="flex-shrink-0 text-xs px-3 py-1 rounded-full bg-white dark:bg-slate-900 hover:bg-teal-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 hover:border-teal-300 dark:hover:border-teal-700 text-slate-700 dark:text-slate-300 hover:text-teal-800 dark:hover:text-teal-300 transition-colors font-medium shadow-2xs"
+        class="flex-shrink-0 text-xs px-3 py-1 rounded-full bg-white dark:bg-[#111736] hover:bg-[#EEEFFD] dark:hover:bg-[#1C2555] border border-[#E3E5F8] dark:border-[#1E285C] hover:border-[#5B65DC] text-[#122056] dark:text-[#BAC4E6] hover:text-[#5B65DC] transition-colors font-medium shadow-2xs"
         data-i18n="assistant.sugg3"
       >
         🩺 Symptom & Side Effect Check
@@ -254,7 +256,7 @@
       <button
         type="button"
         data-prompt-suggestion="What dietary or lifestyle modifications help manage Hypertension alongside my prescriptions?"
-        class="flex-shrink-0 text-xs px-3 py-1 rounded-full bg-white dark:bg-slate-900 hover:bg-teal-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 hover:border-teal-300 dark:hover:border-teal-700 text-slate-700 dark:text-slate-300 hover:text-teal-800 dark:hover:text-teal-300 transition-colors font-medium shadow-2xs"
+        class="flex-shrink-0 text-xs px-3 py-1 rounded-full bg-white dark:bg-[#111736] hover:bg-[#EEEFFD] dark:hover:bg-[#1C2555] border border-[#E3E5F8] dark:border-[#1E285C] hover:border-[#5B65DC] text-[#122056] dark:text-[#BAC4E6] hover:text-[#5B65DC] transition-colors font-medium shadow-2xs"
         data-i18n="assistant.sugg4"
       >
         🥗 Dietary Tips for Hypertension
@@ -265,7 +267,7 @@
     <!-- Prompt Composer Bar (Anchored Bottom) -->
     <!-- =================================================================== -->
     <div class="flex-shrink-0 pb-3 pt-1">
-      <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/90 dark:border-slate-800 shadow-md focus-within:border-teal-600 focus-within:ring-2 focus-within:ring-teal-500/20 transition-all p-2 sm:p-2.5">
+      <div class="bg-white dark:bg-[#111736] rounded-2xl border border-[#E3E5F8] dark:border-[#1E285C] shadow-md focus-within:border-[#5B65DC] focus-within:ring-2 focus-within:ring-[#5B65DC]/20 transition-all p-2 sm:p-2.5">
         
         <!-- Textarea input -->
         <textarea
@@ -273,27 +275,27 @@
           rows="1"
           placeholder="Ask your medical assistant about your symptoms, medications, or lab results..."
           data-i18n-placeholder="assistant.prompt.placeholder"
-          class="w-full px-2.5 py-1.5 text-sm sm:text-base text-slate-900 dark:text-white placeholder:text-slate-400 bg-transparent border-0 focus:ring-0 focus:outline-none resize-none max-h-40 leading-relaxed"
+          class="w-full px-2.5 py-1.5 text-sm sm:text-base text-[#122056] dark:text-white placeholder:text-[#828EA8] bg-transparent border-0 focus:ring-0 focus:outline-none resize-none max-h-40 leading-relaxed"
           aria-label="Clinical inquiry prompt"
         ></textarea>
 
         <!-- Composer Bottom Controls -->
-        <div class="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-800 px-1">
+        <div class="flex items-center justify-between pt-2 border-t border-[#E3E5F8] dark:border-[#1E285C] px-1">
           
           <!-- Context Status Badge -->
-          <div id="composerContextBadge" class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-teal-50 dark:bg-teal-950/60 border border-teal-200/80 dark:border-teal-800">
-            <span class="w-2 h-2 rounded-full bg-teal-500 animate-pulse"></span>
-            <span class="text-xs font-medium text-teal-700 dark:text-teal-300">3 Meds in Context</span>
+          <div id="composerContextBadge" class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#EEEFFD] dark:bg-[#1C2555] border border-[#E3E5F8] dark:border-[#1E285C]">
+            <span class="w-2 h-2 rounded-full bg-[#5B65DC] animate-pulse"></span>
+            <span class="text-xs font-medium text-[#5B65DC] dark:text-[#8F9AF0]">0 Meds in Context</span>
           </div>
 
           <!-- Send Action Button -->
           <div class="flex items-center gap-2">
-            <span class="text-[11px] text-slate-400 hidden sm:inline" data-i18n="assistant.press_enter">Press Enter ↵ to send</span>
+            <span class="text-[11px] text-[#828EA8] hidden sm:inline" data-i18n="assistant.press_enter">Press Enter ↵ to send</span>
             <button
               type="button"
               id="sendPromptBtn"
               disabled
-              class="opacity-40 cursor-not-allowed bg-slate-300 dark:bg-slate-800 text-slate-500 p-2.5 rounded-xl font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 flex items-center justify-center"
+              class="opacity-40 cursor-not-allowed bg-slate-300 dark:bg-[#161E45] text-[#828EA8] p-2.5 rounded-xl font-semibold transition-all focus:outline-none flex items-center justify-center"
               aria-label="Send clinical inquiry"
             >
               <i data-lucide="arrow-up" class="w-4 h-4"></i>
@@ -306,8 +308,8 @@
 
       <!-- Medical Safety Footnote Disclaimer -->
       <div class="mt-2 text-center">
-        <p class="text-[11px] text-slate-400 flex items-center justify-center gap-1">
-          <i data-lucide="info" class="w-3 h-3 text-teal-700 dark:text-teal-400 flex-shrink-0"></i>
+        <p class="text-[11px] text-[#828EA8] flex items-center justify-center gap-1">
+          <i data-lucide="info" class="w-3 h-3 text-[#5B65DC] dark:text-[#8F9AF0] flex-shrink-0"></i>
           <span data-i18n="footer.disclaimer">AuraMed AI provides clinical information, not formal diagnoses. In emergencies, call 911 immediately.</span>
         </p>
       </div>
@@ -319,21 +321,21 @@
   <!-- ===================================================================== -->
   <!-- Modal: Add / Edit Medicine -->
   <!-- ===================================================================== -->
-  <div id="addMedicineModal" class="hidden fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-xs flex items-center justify-center p-4 modal-overlay-enter" role="dialog" aria-modal="true" aria-labelledby="addMedTitle">
-    <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xl max-w-lg w-full p-6 sm:p-7 modal-card-enter text-slate-900 dark:text-slate-100">
+  <div id="addMedicineModal" class="hidden fixed inset-0 z-50 bg-[#122056]/50 backdrop-blur-xs flex items-center justify-center p-4 modal-overlay-enter" role="dialog" aria-modal="true" aria-labelledby="addMedTitle">
+    <div class="bg-white dark:bg-[#111736] rounded-2xl border border-[#E3E5F8] dark:border-[#1E285C] shadow-xl max-w-lg w-full p-6 sm:p-7 modal-card-enter text-[#122056] dark:text-[#FAFAFD]">
       
       <!-- Modal Header -->
-      <div class="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800">
+      <div class="flex items-center justify-between pb-4 border-b border-[#E3E5F8] dark:border-[#1E285C]">
         <div class="flex items-center gap-2.5">
-          <div class="w-8 h-8 rounded-xl bg-teal-50 dark:bg-teal-950/60 text-teal-700 dark:text-teal-400 flex items-center justify-center">
+          <div class="w-8 h-8 rounded-xl bg-[#EEEFFD] dark:bg-[#1C2555] text-[#5B65DC] dark:text-[#8F9AF0] flex items-center justify-center">
             <i data-lucide="pill" class="w-4 h-4"></i>
           </div>
           <div>
             <h3 id="addMedTitle" class="text-base font-bold font-sans" data-i18n="modal.add_med.title">Add Medication to AI Context</h3>
-            <p class="text-xs text-slate-500 dark:text-slate-400" data-i18n="modal.add_med.subtitle">Informs drug interactions and schedule alerts.</p>
+            <p class="text-xs text-[#47547E] dark:text-[#BAC4E6]" data-i18n="modal.add_med.subtitle">Informs drug interactions and schedule alerts.</p>
           </div>
         </div>
-        <button type="button" id="closeAddMedBtn" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Close dialog">
+        <button type="button" id="closeAddMedBtn" class="text-[#828EA8] hover:text-[#122056] dark:hover:text-white p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-[#1C2555]" aria-label="Close dialog">
           <i data-lucide="x" class="w-4 h-4"></i>
         </button>
       </div>
@@ -343,7 +345,7 @@
         
         <!-- Medicine Name -->
         <div>
-          <label for="medName" class="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1">
+          <label for="medName" class="block text-xs font-semibold uppercase tracking-wider text-[#122056] dark:text-[#BAC4E6] mb-1">
             <span data-i18n="modal.add_med.name.label">Medicine Name</span> <span class="text-rose-500">*</span>
           </label>
           <input
@@ -352,14 +354,14 @@
             required
             placeholder="e.g. Lisinopril or Paracetamol"
             data-i18n-placeholder="modal.add_med.name.placeholder"
-            class="w-full px-3.5 py-2.5 text-sm bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-teal-600 focus:ring-2 focus:ring-teal-500/20"
+            class="w-full px-3.5 py-2.5 text-sm bg-white dark:bg-[#161E45] border border-[#E3E5F8] dark:border-[#1E285C] rounded-xl text-[#122056] dark:text-white placeholder:text-[#828EA8] focus:border-[#5B65DC] focus:ring-2 focus:ring-[#5B65DC]/20"
           />
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <!-- Dosage -->
           <div>
-            <label for="medDosage" class="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1" data-i18n="modal.add_med.dose.label">
+            <label for="medDosage" class="block text-xs font-semibold uppercase tracking-wider text-[#122056] dark:text-[#BAC4E6] mb-1" data-i18n="modal.add_med.dose.label">
               Dosage / Strength
             </label>
             <input
@@ -367,13 +369,13 @@
               id="medDosage"
               placeholder="e.g. 500 mg or 10 ml"
               data-i18n-placeholder="modal.add_med.dose.placeholder"
-              class="w-full px-3.5 py-2 text-sm bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-teal-600 focus:ring-2 focus:ring-teal-500/20"
+              class="w-full px-3.5 py-2 text-sm bg-white dark:bg-[#161E45] border border-[#E3E5F8] dark:border-[#1E285C] rounded-xl text-[#122056] dark:text-white placeholder:text-[#828EA8] focus:border-[#5B65DC] focus:ring-2 focus:ring-[#5B65DC]/20"
             />
           </div>
 
           <!-- Frequency -->
           <div>
-            <label for="medFrequency" class="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1" data-i18n="modal.add_med.freq.label">
+            <label for="medFrequency" class="block text-xs font-semibold uppercase tracking-wider text-[#122056] dark:text-[#BAC4E6] mb-1" data-i18n="modal.add_med.freq.label">
               Frequency
             </label>
             <input
@@ -381,17 +383,17 @@
               id="medFrequency"
               placeholder="e.g. Twice daily with meals"
               data-i18n-placeholder="modal.add_med.freq.placeholder"
-              class="w-full px-3.5 py-2 text-sm bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-teal-600 focus:ring-2 focus:ring-teal-500/20"
+              class="w-full px-3.5 py-2 text-sm bg-white dark:bg-[#161E45] border border-[#E3E5F8] dark:border-[#1E285C] rounded-xl text-[#122056] dark:text-white placeholder:text-[#828EA8] focus:border-[#5B65DC] focus:ring-2 focus:ring-[#5B65DC]/20"
             />
           </div>
         </div>
 
         <!-- Modal Actions -->
-        <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-end gap-3">
+        <div class="pt-4 border-t border-[#E3E5F8] dark:border-[#1E285C] flex items-center justify-end gap-3">
           <button
             type="button"
             id="cancelAddMedBtn"
-            class="px-4 py-2 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors"
+            class="px-4 py-2 text-xs font-semibold text-[#47547E] dark:text-[#BAC4E6] hover:text-[#122056] dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#1C2555] rounded-xl transition-colors"
             data-i18n="modal.add_med.cancel"
           >
             Cancel
@@ -399,7 +401,7 @@
           <button
             type="submit"
             id="submitMedBtn"
-            class="px-5 py-2.5 text-xs font-semibold rounded-xl bg-teal-700 hover:bg-teal-800 text-white shadow-sm transition-all"
+            class="px-5 py-2.5 text-xs font-semibold rounded-xl bg-[#5B65DC] hover:bg-[#4A54CA] text-white shadow-sm transition-all"
             data-i18n="modal.add_med.submit"
           >
             Add to Active Context

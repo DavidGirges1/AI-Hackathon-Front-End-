@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title data-i18n="form.title">Patient Clinical Intake | AuraMed AI</title>
   
-  <!-- Tailwind CSS CDN with Dark Mode Support -->
+  <!-- Tailwind CSS CDN with Custom Palette & Dark Mode Support -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -13,15 +13,17 @@
       theme: {
         extend: {
           colors: {
-            teal: {
-              50: '#f0fdfa',
-              100: '#ccfbf1',
-              200: '#99f6e4',
-              500: '#14b8a6',
-              600: '#0d9488',
-              700: '#0f766e',
-              800: '#115e59',
-              900: '#134e4a',
+            brand: {
+              navy: '#122056',
+              accent: '#5B65DC',
+              accentHover: '#4A54CA',
+              light: '#EEEFFD',
+              bg: '#FAFAFD',
+              surface: '#FFFFFF',
+              darkBg: '#090D1F',
+              darkSurface: '#111736',
+              darkCard: '#161E45',
+              darkBorder: '#1E285C'
             }
           },
           fontFamily: {
@@ -42,22 +44,22 @@
   <!-- Custom Styles -->
   <link rel="stylesheet" href="css/styles.css" />
 </head>
-<body class="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col justify-between selection:bg-teal-100 selection:text-teal-900 transition-colors duration-200">
+<body class="min-h-screen bg-[#FAFAFD] dark:bg-[#090D1F] text-[#122056] dark:text-[#FAFAFD] flex flex-col justify-between selection:bg-[#EEEFFD] selection:text-[#122056] transition-colors duration-200">
 
   <!-- Header with Brand & Controls -->
-  <header class="w-full border-b border-slate-200/80 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md sticky top-0 z-30 transition-colors">
+  <header class="w-full border-b border-[#E3E5F8] dark:border-[#1E285C] bg-white/90 dark:bg-[#111736]/90 backdrop-blur-md sticky top-0 z-30 transition-colors">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       
       <!-- Brand Logo -->
-      <a href="assistant.html" class="flex items-center gap-2.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 rounded-lg p-1">
-        <div class="w-9 h-9 rounded-xl bg-teal-700 text-white flex items-center justify-center shadow-sm group-hover:bg-teal-800 transition-colors">
+      <a href="assistant.html" class="flex items-center gap-2.5 group focus:outline-none rounded-lg p-1">
+        <div class="w-9 h-9 rounded-xl bg-[#5B65DC] text-white flex items-center justify-center shadow-sm group-hover:bg-[#4A54CA] transition-colors">
           <i data-lucide="cross" class="w-5 h-5"></i>
         </div>
         <div class="flex flex-col">
-          <span class="text-base font-bold tracking-tight text-slate-900 dark:text-white leading-tight font-sans">
-            <span data-i18n="brand.name">AuraMed</span><span class="text-teal-700 dark:text-teal-400" data-i18n="brand.suffix">AI</span>
+          <span class="text-base font-bold tracking-tight text-[#122056] dark:text-white leading-tight font-sans">
+            <span data-i18n="brand.name">AuraMed</span><span class="text-[#5B65DC] dark:text-[#8F9AF0]" data-i18n="brand.suffix">AI</span>
           </span>
-          <span class="text-[10px] font-semibold text-slate-500 dark:text-slate-400 tracking-wider uppercase" data-i18n="brand.tagline">Clinical Assistant</span>
+          <span class="text-[10px] font-semibold text-[#47547E] dark:text-[#BAC4E6] tracking-wider uppercase hidden sm:inline" data-i18n="brand.tagline">Clinical Assistant</span>
         </div>
       </a>
 
@@ -67,10 +69,10 @@
         <button
           type="button"
           data-action="toggle-lang"
-          class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-teal-500"
+          class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-[#EEEFFD] dark:bg-[#1C2555] hover:bg-[#E3E5F8] dark:hover:bg-[#252E63] text-[#122056] dark:text-[#FAFAFD] border border-[#E3E5F8] dark:border-[#1E285C] transition-colors focus:outline-none"
           title="Switch Language / تبديل اللغة"
         >
-          <i data-lucide="globe" class="w-3.5 h-3.5 text-teal-600 dark:text-teal-400"></i>
+          <i data-lucide="globe" class="w-3.5 h-3.5 text-[#5B65DC] dark:text-[#8F9AF0]"></i>
           <span class="lang-label">العربية</span>
         </button>
 
@@ -78,7 +80,7 @@
         <button
           type="button"
           data-action="toggle-theme"
-          class="p-2 rounded-full text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-teal-500"
+          class="p-2 rounded-full text-[#47547E] hover:text-[#122056] dark:text-[#BAC4E6] dark:hover:text-white bg-[#EEEFFD] dark:bg-[#1C2555] hover:bg-[#E3E5F8] dark:hover:bg-[#252E63] border border-[#E3E5F8] dark:border-[#1E285C] transition-colors focus:outline-none"
           aria-label="Toggle Dark Mode"
           title="Toggle Dark Mode"
         >
@@ -86,8 +88,8 @@
         </button>
 
         <!-- Step / Status Badge -->
-        <div class="hidden sm:flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 dark:bg-teal-950/60 border border-teal-200/80 dark:border-teal-800 text-xs font-semibold text-teal-800 dark:text-teal-300">
-          <span class="w-2 h-2 rounded-full bg-teal-500 animate-pulse"></span>
+        <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#EEEFFD] dark:bg-[#1C2555] border border-[#E3E5F8] dark:border-[#1E285C] text-xs font-semibold text-[#5B65DC] dark:text-[#8F9AF0]">
+          <span class="w-2 h-2 rounded-full bg-[#5B65DC] animate-pulse"></span>
           <span>Clinical Intake Step</span>
         </div>
       </div>
@@ -101,11 +103,11 @@
     <!-- Header Section -->
     <div class="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
       <div>
-        <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white font-sans flex items-center gap-2.5">
-          <i data-lucide="clipboard-pen" class="w-7 h-7 text-teal-700 dark:text-teal-400"></i>
+        <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-[#122056] dark:text-white font-sans flex items-center gap-2.5">
+          <i data-lucide="clipboard-pen" class="w-7 h-7 text-[#5B65DC] dark:text-[#8F9AF0]"></i>
           <span data-i18n="form.heading">Patient Clinical Intake</span>
         </h1>
-        <p class="text-sm text-slate-500 dark:text-slate-400 mt-1 max-w-2xl" data-i18n="form.subheading">
+        <p class="text-sm text-[#47547E] dark:text-[#BAC4E6] mt-1 max-w-2xl" data-i18n="form.subheading">
           Provide your health context to calibrate interaction alerts, dosage schedules, and clinical guidance.
         </p>
       </div>
@@ -114,35 +116,35 @@
       <button
         type="button"
         id="prefillDemoBtn"
-        class="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-semibold rounded-xl bg-teal-50 dark:bg-teal-950/60 text-teal-700 dark:text-teal-300 border border-teal-200 dark:border-teal-800 hover:bg-teal-100/80 transition-colors shadow-2xs self-start sm:self-auto"
+        class="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-semibold rounded-xl bg-[#EEEFFD] dark:bg-[#1C2555] text-[#5B65DC] dark:text-[#8F9AF0] border border-[#E3E5F8] dark:border-[#1E285C] hover:bg-[#E3E5F8] dark:hover:bg-[#252E63] transition-colors shadow-2xs self-start sm:self-auto"
       >
-        <i data-lucide="sparkles" class="w-4 h-4 text-teal-600 dark:text-teal-400"></i>
+        <i data-lucide="sparkles" class="w-4 h-4 text-[#5B65DC] dark:text-[#8F9AF0]"></i>
         <span data-i18n="form.demo_prefill">Fill Sample Clinical Data</span>
       </button>
     </div>
 
     <!-- Intake Form Card -->
-    <form id="patientIntakeForm" class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm p-6 sm:p-8 space-y-8 transition-colors" novalidate>
+    <form id="patientIntakeForm" class="bg-white dark:bg-[#111736] rounded-2xl border border-[#E3E5F8] dark:border-[#1E285C] shadow-sm p-6 sm:p-8 space-y-8 transition-colors" novalidate>
 
       <!-- ================================================================= -->
       <!-- SECTION 1: Demographics & Anthropometrics -->
       <!-- ================================================================= -->
       <div>
-        <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3 mb-5">
+        <div class="flex items-center justify-between border-b border-[#E3E5F8] dark:border-[#1E285C] pb-3 mb-5">
           <div class="flex items-center gap-2">
-            <div class="w-7 h-7 rounded-lg bg-teal-50 dark:bg-teal-950/60 text-teal-700 dark:text-teal-400 flex items-center justify-center">
+            <div class="w-7 h-7 rounded-lg bg-[#EEEFFD] dark:bg-[#1C2555] text-[#5B65DC] dark:text-[#8F9AF0] flex items-center justify-center">
               <i data-lucide="user" class="w-4 h-4"></i>
             </div>
-            <h2 class="text-base font-bold text-slate-900 dark:text-white font-sans" data-i18n="form.sec1.title">1. Demographics & Vitals</h2>
+            <h2 class="text-base font-bold text-[#122056] dark:text-white font-sans" data-i18n="form.sec1.title">1. Demographics & Vitals</h2>
           </div>
-          <span class="text-xs font-medium text-slate-400" data-i18n="form.sec1.subtitle">Baseline Context</span>
+          <span class="text-xs font-medium text-[#828EA8]" data-i18n="form.sec1.subtitle">Baseline Context</span>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           
           <!-- Full Legal Name -->
           <div class="sm:col-span-2 lg:col-span-1">
-            <label for="full_name" class="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
+            <label for="full_name" class="block text-xs font-semibold uppercase tracking-wider text-[#122056] dark:text-[#BAC4E6] mb-1.5">
               <span data-i18n="form.fullname.label">Full Legal Name</span> <span class="text-rose-500">*</span>
             </label>
             <input
@@ -152,13 +154,13 @@
               required
               placeholder="e.g. Sarah Jenkins"
               data-i18n-placeholder="signup.fullname.placeholder"
-              class="w-full px-3.5 py-2.5 text-sm bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-teal-600 focus:ring-2 focus:ring-teal-500/20 transition-all"
+              class="w-full px-3.5 py-2.5 text-sm bg-white dark:bg-[#161E45] border border-[#E3E5F8] dark:border-[#1E285C] rounded-xl text-[#122056] dark:text-white placeholder:text-[#828EA8] focus:border-[#5B65DC] focus:ring-2 focus:ring-[#5B65DC]/20 transition-all"
             />
           </div>
 
           <!-- Date of Birth -->
           <div>
-            <label for="date_of_birth" class="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
+            <label for="date_of_birth" class="block text-xs font-semibold uppercase tracking-wider text-[#122056] dark:text-[#BAC4E6] mb-1.5">
               <span data-i18n="form.dob.label">Date of Birth</span> <span class="text-rose-500">*</span>
             </label>
             <input
@@ -166,19 +168,19 @@
               id="date_of_birth"
               name="date_of_birth"
               required
-              class="w-full px-3.5 py-2.5 text-sm bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white focus:border-teal-600 focus:ring-2 focus:ring-teal-500/20 transition-all"
+              class="w-full px-3.5 py-2.5 text-sm bg-white dark:bg-[#161E45] border border-[#E3E5F8] dark:border-[#1E285C] rounded-xl text-[#122056] dark:text-white focus:border-[#5B65DC] focus:ring-2 focus:ring-[#5B65DC]/20 transition-all"
             />
           </div>
 
           <!-- Gender -->
           <div>
-            <label for="gender" class="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
+            <label for="gender" class="block text-xs font-semibold uppercase tracking-wider text-[#122056] dark:text-[#BAC4E6] mb-1.5">
               <span data-i18n="form.gender.label">Gender</span>
             </label>
             <select
               id="gender"
               name="gender"
-              class="w-full px-3.5 py-2.5 text-sm bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white focus:border-teal-600 focus:ring-2 focus:ring-teal-500/20 transition-all"
+              class="w-full px-3.5 py-2.5 text-sm bg-white dark:bg-[#161E45] border border-[#E3E5F8] dark:border-[#1E285C] rounded-xl text-[#122056] dark:text-white focus:border-[#5B65DC] focus:ring-2 focus:ring-[#5B65DC]/20 transition-all"
             >
               <option value="female" data-i18n="form.gender.female">Female</option>
               <option value="male" data-i18n="form.gender.male">Male</option>
@@ -197,13 +199,13 @@
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 items-start">
               <!-- Currently Pregnant Select -->
               <div>
-                <label for="is_pregnant" class="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5" data-i18n="form.maternal.pregnant.label">
+                <label for="is_pregnant" class="block text-xs font-semibold uppercase tracking-wider text-[#122056] dark:text-[#BAC4E6] mb-1.5" data-i18n="form.maternal.pregnant.label">
                   Are you currently pregnant?
                 </label>
                 <select
                   id="is_pregnant"
                   name="is_pregnant"
-                  class="w-full px-3.5 py-2.5 text-sm bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white focus:border-pink-500 focus:ring-2 focus:ring-pink-500/20 transition-all"
+                  class="w-full px-3.5 py-2.5 text-sm bg-white dark:bg-[#161E45] border border-pink-200 dark:border-pink-900 rounded-xl text-[#122056] dark:text-white focus:border-pink-500 focus:ring-2 focus:ring-pink-500/20 transition-all"
                 >
                   <option value="false" data-i18n="form.maternal.no">No</option>
                   <option value="true" data-i18n="form.maternal.yes">Yes, currently pregnant</option>
@@ -213,7 +215,7 @@
               <!-- Gestational Age / Weeks Input -->
               <div id="pregnancyWeeksGroup" class="hidden">
                 <div class="flex items-center justify-between mb-1.5">
-                  <label for="pregnancy_weeks" class="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300" data-i18n="form.maternal.weeks.label">
+                  <label for="pregnancy_weeks" class="block text-xs font-semibold uppercase tracking-wider text-[#122056] dark:text-[#BAC4E6]" data-i18n="form.maternal.weeks.label">
                     Pregnancy Week (1–42)
                   </label>
                 </div>
@@ -224,20 +226,20 @@
                   min="1"
                   max="42"
                   placeholder="e.g. 24"
-                  class="w-full px-3.5 py-2.5 text-sm bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-pink-500 focus:ring-2 focus:ring-pink-500/20 transition-all"
+                  class="w-full px-3.5 py-2.5 text-sm bg-white dark:bg-[#161E45] border border-pink-200 dark:border-pink-900 rounded-xl text-[#122056] dark:text-white placeholder:text-[#828EA8] focus:border-pink-500 focus:ring-2 focus:ring-pink-500/20 transition-all"
                 />
               </div>
 
               <!-- Computed Trimester Display Card -->
               <div id="trimesterCard" class="hidden">
-                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5" data-i18n="form.maternal.trimester.label">
+                <label class="block text-xs font-semibold uppercase tracking-wider text-[#122056] dark:text-[#BAC4E6] mb-1.5" data-i18n="form.maternal.trimester.label">
                   Estimated Trimester
                 </label>
-                <div class="flex items-center gap-2 p-2 bg-white dark:bg-slate-800 rounded-xl border border-pink-200 dark:border-pink-900 shadow-2xs">
+                <div class="flex items-center gap-2 p-2 bg-white dark:bg-[#161E45] rounded-xl border border-pink-200 dark:border-pink-900 shadow-2xs">
                   <span id="trimesterBadge" class="text-xs font-bold px-2.5 py-1 rounded-lg bg-pink-100 dark:bg-pink-950 text-pink-800 dark:text-pink-300 border border-pink-200 dark:border-pink-800">
                     -- Trimester
                   </span>
-                  <span id="trimesterSubtext" class="text-[11px] text-slate-500 dark:text-slate-400">Enter week</span>
+                  <span id="trimesterSubtext" class="text-[11px] text-[#828EA8]">Enter week</span>
                 </div>
               </div>
             </div>
@@ -245,13 +247,13 @@
 
           <!-- Blood Type -->
           <div>
-            <label for="blood_type" class="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5" data-i18n="form.blood.label">
+            <label for="blood_type" class="block text-xs font-semibold uppercase tracking-wider text-[#122056] dark:text-[#BAC4E6] mb-1.5" data-i18n="form.blood.label">
               Blood Type
             </label>
             <select
               id="blood_type"
               name="blood_type"
-              class="w-full px-3.5 py-2.5 text-sm bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white focus:border-teal-600 focus:ring-2 focus:ring-teal-500/20 transition-all"
+              class="w-full px-3.5 py-2.5 text-sm bg-white dark:bg-[#161E45] border border-[#E3E5F8] dark:border-[#1E285C] rounded-xl text-[#122056] dark:text-white focus:border-[#5B65DC] focus:ring-2 focus:ring-[#5B65DC]/20 transition-all"
             >
               <option value="Unknown">Unknown</option>
               <option value="A+">A+</option>
@@ -268,7 +270,7 @@
           <!-- Height (cm) -->
           <div>
             <div class="flex items-center justify-between mb-1.5">
-              <label for="height_cm" class="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300" data-i18n="form.height.label">
+              <label for="height_cm" class="block text-xs font-semibold uppercase tracking-wider text-[#122056] dark:text-[#BAC4E6]" data-i18n="form.height.label">
                 Height (cm)
               </label>
             </div>
@@ -279,17 +281,17 @@
               min="50"
               max="250"
               placeholder="e.g. 168"
-              class="w-full px-3.5 py-2.5 text-sm bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-teal-600 focus:ring-2 focus:ring-teal-500/20 transition-all"
+              class="w-full px-3.5 py-2.5 text-sm bg-white dark:bg-[#161E45] border border-[#E3E5F8] dark:border-[#1E285C] rounded-xl text-[#122056] dark:text-white placeholder:text-[#828EA8] focus:border-[#5B65DC] focus:ring-2 focus:ring-[#5B65DC]/20 transition-all"
             />
           </div>
 
           <!-- Weight (kg) & Live BMI Widget -->
           <div>
             <div class="flex items-center justify-between mb-1.5">
-              <label for="weight_kg" class="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300" data-i18n="form.weight.label">
+              <label for="weight_kg" class="block text-xs font-semibold uppercase tracking-wider text-[#122056] dark:text-[#BAC4E6]" data-i18n="form.weight.label">
                 Weight (kg)
               </label>
-              <span id="bmiBadge" class="hidden text-xs font-semibold px-2 py-0.5 rounded-full bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200">
+              <span id="bmiBadge" class="hidden text-xs font-semibold px-2 py-0.5 rounded-full bg-[#EEEFFD] dark:bg-[#1C2555] text-[#5B65DC] dark:text-[#8F9AF0]">
                 Normal
               </span>
             </div>
@@ -302,9 +304,9 @@
                 max="300"
                 step="0.5"
                 placeholder="e.g. 65"
-                class="w-full px-3.5 py-2.5 text-sm bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-teal-600 focus:ring-2 focus:ring-teal-500/20 transition-all"
+                class="w-full px-3.5 py-2.5 text-sm bg-white dark:bg-[#161E45] border border-[#E3E5F8] dark:border-[#1E285C] rounded-xl text-[#122056] dark:text-white placeholder:text-[#828EA8] focus:border-[#5B65DC] focus:ring-2 focus:ring-[#5B65DC]/20 transition-all"
               />
-              <span id="bmiDisplay" class="absolute right-3.5 rtl:right-auto rtl:left-3.5 top-2.5 text-xs font-semibold text-slate-400">
+              <span id="bmiDisplay" class="absolute right-3.5 rtl:right-auto rtl:left-3.5 top-2.5 text-xs font-semibold text-[#828EA8]">
                 BMI: --
               </span>
             </div>
@@ -317,42 +319,42 @@
       <!-- SECTION 2: Medical History & Sensitivities -->
       <!-- ================================================================= -->
       <div>
-        <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3 mb-5">
+        <div class="flex items-center justify-between border-b border-[#E3E5F8] dark:border-[#1E285C] pb-3 mb-5">
           <div class="flex items-center gap-2">
-            <div class="w-7 h-7 rounded-lg bg-teal-50 dark:bg-teal-950/60 text-teal-700 dark:text-teal-400 flex items-center justify-center">
+            <div class="w-7 h-7 rounded-lg bg-[#EEEFFD] dark:bg-[#1C2555] text-[#5B65DC] dark:text-[#8F9AF0] flex items-center justify-center">
               <i data-lucide="shield-alert" class="w-4 h-4"></i>
             </div>
-            <h2 class="text-base font-bold text-slate-900 dark:text-white font-sans" data-i18n="form.sec2.title">2. Medical History & Sensitivities</h2>
+            <h2 class="text-base font-bold text-[#122056] dark:text-white font-sans" data-i18n="form.sec2.title">2. Medical History & Sensitivities</h2>
           </div>
-          <span class="text-xs font-medium text-slate-400" data-i18n="form.sec2.subtitle">Clinical Risk Screening</span>
+          <span class="text-xs font-medium text-[#828EA8]" data-i18n="form.sec2.subtitle">Clinical Risk Screening</span>
         </div>
 
         <div class="space-y-6">
           
           <!-- Chronic Conditions -->
           <div>
-            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
+            <label class="block text-xs font-semibold uppercase tracking-wider text-[#122056] dark:text-[#BAC4E6] mb-2">
               <span data-i18n="form.conditions.label">Diagnosed Chronic Conditions</span>
             </label>
 
             <!-- Preset Tag Pills -->
             <div class="flex flex-wrap gap-2 mb-3" id="presetConditionsList">
-              <button type="button" data-condition-pill="Hypertension" data-i18n="form.cond.hypertension" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-teal-50 dark:hover:bg-teal-950 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition-colors">
+              <button type="button" data-condition-pill="Hypertension" data-i18n="form.cond.hypertension" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-[#EEEFFD] dark:bg-[#1C2555] hover:bg-[#E3E5F8] dark:hover:bg-[#252E63] text-[#122056] dark:text-[#FAFAFD] border border-[#E3E5F8] dark:border-[#1E285C] transition-colors">
                 + Hypertension
               </button>
-              <button type="button" data-condition-pill="Type 2 Diabetes" data-i18n="form.cond.diabetes" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-teal-50 dark:hover:bg-teal-950 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition-colors">
+              <button type="button" data-condition-pill="Type 2 Diabetes" data-i18n="form.cond.diabetes" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-[#EEEFFD] dark:bg-[#1C2555] hover:bg-[#E3E5F8] dark:hover:bg-[#252E63] text-[#122056] dark:text-[#FAFAFD] border border-[#E3E5F8] dark:border-[#1E285C] transition-colors">
                 + Type 2 Diabetes
               </button>
-              <button type="button" data-condition-pill="Mild Asthma" data-i18n="form.cond.asthma" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-teal-50 dark:hover:bg-teal-950 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition-colors">
+              <button type="button" data-condition-pill="Mild Asthma" data-i18n="form.cond.asthma" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-[#EEEFFD] dark:bg-[#1C2555] hover:bg-[#E3E5F8] dark:hover:bg-[#252E63] text-[#122056] dark:text-[#FAFAFD] border border-[#E3E5F8] dark:border-[#1E285C] transition-colors">
                 + Mild Asthma
               </button>
-              <button type="button" data-condition-pill="Hyperlipidemia" data-i18n="form.cond.lipid" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-teal-50 dark:hover:bg-teal-950 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition-colors">
+              <button type="button" data-condition-pill="Hyperlipidemia" data-i18n="form.cond.lipid" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-[#EEEFFD] dark:bg-[#1C2555] hover:bg-[#E3E5F8] dark:hover:bg-[#252E63] text-[#122056] dark:text-[#FAFAFD] border border-[#E3E5F8] dark:border-[#1E285C] transition-colors">
                 + Hyperlipidemia
               </button>
-              <button type="button" data-condition-pill="GERD / Acid Reflux" data-i18n="form.cond.gerd" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-teal-50 dark:hover:bg-teal-950 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition-colors">
+              <button type="button" data-condition-pill="GERD / Acid Reflux" data-i18n="form.cond.gerd" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-[#EEEFFD] dark:bg-[#1C2555] hover:bg-[#E3E5F8] dark:hover:bg-[#252E63] text-[#122056] dark:text-[#FAFAFD] border border-[#E3E5F8] dark:border-[#1E285C] transition-colors">
                 + GERD / Acid Reflux
               </button>
-              <button type="button" data-condition-pill="None" data-i18n="form.cond.none" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-teal-50 dark:hover:bg-teal-950 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition-colors">
+              <button type="button" data-condition-pill="None" data-i18n="form.cond.none" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-[#EEEFFD] dark:bg-[#1C2555] hover:bg-[#E3E5F8] dark:hover:bg-[#252E63] text-[#122056] dark:text-[#FAFAFD] border border-[#E3E5F8] dark:border-[#1E285C] transition-colors">
                 None
               </button>
             </div>
@@ -364,12 +366,12 @@
                 id="customConditionInput"
                 placeholder="Type custom condition & press Add"
                 data-i18n-placeholder="form.conditions.custom.placeholder"
-                class="flex-1 px-3.5 py-2 text-xs bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-teal-600 focus:ring-2 focus:ring-teal-500/20"
+                class="flex-1 px-3.5 py-2 text-xs bg-white dark:bg-[#161E45] border border-[#E3E5F8] dark:border-[#1E285C] rounded-xl text-[#122056] dark:text-white placeholder:text-[#828EA8] focus:border-[#5B65DC] focus:ring-2 focus:ring-[#5B65DC]/20"
               />
               <button
                 type="button"
                 id="addConditionBtn"
-                class="px-4 py-2 text-xs font-semibold rounded-xl bg-slate-800 dark:bg-slate-700 hover:bg-slate-900 text-white transition-colors"
+                class="px-4 py-2 text-xs font-semibold rounded-xl bg-[#122056] dark:bg-[#1C2555] hover:bg-[#1c2e78] text-white transition-colors"
                 data-i18n="form.add_btn"
               >
                 Add
@@ -380,22 +382,22 @@
 
           <!-- Known Drug Allergies -->
           <div>
-            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
+            <label class="block text-xs font-semibold uppercase tracking-wider text-[#122056] dark:text-[#BAC4E6] mb-2">
               <span data-i18n="form.allergies.label">Known Drug Allergies & Adverse Reactions</span>
             </label>
 
             <!-- Preset Allergy Pills -->
             <div class="flex flex-wrap gap-2 mb-3" id="presetAllergiesList">
-              <button type="button" data-allergy-pill="Penicillin" data-i18n="form.allergy.penicillin" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-teal-50 dark:hover:bg-teal-950 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition-colors">
+              <button type="button" data-allergy-pill="Penicillin" data-i18n="form.allergy.penicillin" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-[#EEEFFD] dark:bg-[#1C2555] hover:bg-[#E3E5F8] dark:hover:bg-[#252E63] text-[#122056] dark:text-[#FAFAFD] border border-[#E3E5F8] dark:border-[#1E285C] transition-colors">
                 + Penicillin
               </button>
-              <button type="button" data-allergy-pill="Sulfa Drugs" data-i18n="form.allergy.sulfa" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-teal-50 dark:hover:bg-teal-950 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition-colors">
+              <button type="button" data-allergy-pill="Sulfa Drugs" data-i18n="form.allergy.sulfa" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-[#EEEFFD] dark:bg-[#1C2555] hover:bg-[#E3E5F8] dark:hover:bg-[#252E63] text-[#122056] dark:text-[#FAFAFD] border border-[#E3E5F8] dark:border-[#1E285C] transition-colors">
                 + Sulfa Drugs
               </button>
-              <button type="button" data-allergy-pill="Aspirin / NSAIDs" data-i18n="form.allergy.aspirin" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-teal-50 dark:hover:bg-teal-950 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition-colors">
+              <button type="button" data-allergy-pill="Aspirin / NSAIDs" data-i18n="form.allergy.aspirin" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-[#EEEFFD] dark:bg-[#1C2555] hover:bg-[#E3E5F8] dark:hover:bg-[#252E63] text-[#122056] dark:text-[#FAFAFD] border border-[#E3E5F8] dark:border-[#1E285C] transition-colors">
                 + Aspirin / NSAIDs
               </button>
-              <button type="button" data-allergy-pill="No Known Allergies" data-i18n="form.allergy.none" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-teal-50 dark:hover:bg-teal-950 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition-colors">
+              <button type="button" data-allergy-pill="No Known Allergies" data-i18n="form.allergy.none" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-[#EEEFFD] dark:bg-[#1C2555] hover:bg-[#E3E5F8] dark:hover:bg-[#252E63] text-[#122056] dark:text-[#FAFAFD] border border-[#E3E5F8] dark:border-[#1E285C] transition-colors">
                 No Known Allergies (NKDA)
               </button>
             </div>
@@ -407,12 +409,12 @@
                 id="customAllergyInput"
                 placeholder="Type allergen (e.g. Codeine) & press Add"
                 data-i18n-placeholder="form.allergies.custom.placeholder"
-                class="flex-1 px-3.5 py-2 text-xs bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-teal-600 focus:ring-2 focus:ring-teal-500/20"
+                class="flex-1 px-3.5 py-2 text-xs bg-white dark:bg-[#161E45] border border-[#E3E5F8] dark:border-[#1E285C] rounded-xl text-[#122056] dark:text-white placeholder:text-[#828EA8] focus:border-[#5B65DC] focus:ring-2 focus:ring-[#5B65DC]/20"
               />
               <button
                 type="button"
                 id="addAllergyBtn"
-                class="px-4 py-2 text-xs font-semibold rounded-xl bg-slate-800 dark:bg-slate-700 hover:bg-slate-900 text-white transition-colors"
+                class="px-4 py-2 text-xs font-semibold rounded-xl bg-[#122056] dark:bg-[#1C2555] hover:bg-[#1c2e78] text-white transition-colors"
                 data-i18n="form.add_btn"
               >
                 Add
@@ -423,7 +425,7 @@
 
           <!-- Medical / Surgical History -->
           <div>
-            <label for="medical_history" class="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5" data-i18n="form.history.label">
+            <label for="medical_history" class="block text-xs font-semibold uppercase tracking-wider text-[#122056] dark:text-[#BAC4E6] mb-1.5" data-i18n="form.history.label">
               Major Surgeries or Past Hospitalizations
             </label>
             <textarea
@@ -432,7 +434,7 @@
               rows="3"
               placeholder="e.g. Appendectomy (2018), Knee Arthroscopy (2021)..."
               data-i18n-placeholder="form.history.placeholder"
-              class="w-full px-3.5 py-2.5 text-sm bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-teal-600 focus:ring-2 focus:ring-teal-500/20 resize-none transition-all"
+              class="w-full px-3.5 py-2.5 text-sm bg-white dark:bg-[#161E45] border border-[#E3E5F8] dark:border-[#1E285C] rounded-xl text-[#122056] dark:text-white placeholder:text-[#828EA8] focus:border-[#5B65DC] focus:ring-2 focus:ring-[#5B65DC]/20 resize-none transition-all"
             ></textarea>
           </div>
 
@@ -440,15 +442,15 @@
       </div>
 
       <!-- Action Footer -->
-      <div class="pt-6 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <a href="assistant.html" class="text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 order-2 sm:order-1" data-i18n="form.skip">
+      <div class="pt-6 border-t border-[#E3E5F8] dark:border-[#1E285C] flex flex-col sm:flex-row items-center justify-between gap-4">
+        <a href="assistant.html" class="text-xs font-semibold text-[#47547E] dark:text-[#BAC4E6] hover:text-[#122056] dark:hover:text-white order-2 sm:order-1" data-i18n="form.skip">
           Skip for now & continue to Assistant →
         </a>
 
         <button
           type="submit"
           id="submitPatientBtn"
-          class="w-full sm:w-auto py-3 px-8 rounded-xl bg-teal-700 hover:bg-teal-800 active:bg-teal-900 text-white font-semibold text-sm shadow-sm hover:shadow transition-all flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 order-1 sm:order-2"
+          class="w-full sm:w-auto py-3 px-8 rounded-xl bg-[#5B65DC] hover:bg-[#4A54CA] active:bg-[#3B45B5] text-white font-semibold text-sm shadow-sm hover:shadow transition-all flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#5B65DC] focus:ring-offset-2 order-1 sm:order-2"
         >
           <i data-lucide="loader-2" id="submitSpinner" class="w-4 h-4 animate-spin hidden"></i>
           <span id="submitText" data-i18n="form.submit">Save & Continue to AI Assistant</span>
@@ -459,9 +461,9 @@
     </form>
 
     <!-- Medical Safety Reassurance -->
-    <div class="mt-8 text-center text-xs text-slate-500 dark:text-slate-400 max-w-xl mx-auto">
+    <div class="mt-8 text-center text-xs text-[#47547E] dark:text-[#BAC4E6] max-w-xl mx-auto">
       <p class="flex items-center justify-center gap-1.5">
-        <i data-lucide="lock" class="w-3.5 h-3.5 text-teal-600 dark:text-teal-400"></i>
+        <i data-lucide="lock" class="w-3.5 h-3.5 text-[#5B65DC] dark:text-[#8F9AF0]"></i>
         <span data-i18n="footer.security">Your clinical intake data is encrypted per session and never shared with third parties.</span>
       </p>
     </div>
@@ -469,7 +471,7 @@
   </main>
 
   <!-- Global Footer -->
-  <footer class="w-full py-4 text-center border-t border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs text-slate-500 dark:text-slate-400 transition-colors">
+  <footer class="w-full py-4 text-center border-t border-[#E3E5F8] dark:border-[#1E285C] bg-white dark:bg-[#111736] text-xs text-[#47547E] dark:text-[#BAC4E6] transition-colors">
     <div class="max-w-7xl mx-auto px-4">
       <p data-i18n="footer.disclaimer">AuraMed AI provides clinical information, not formal diagnoses. In emergencies, call 911 immediately.</p>
     </div>

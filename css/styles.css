@@ -11,31 +11,29 @@
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  /* Primary Clinical Colors */
-  --color-primary-50: #f0fdfa;
-  --color-primary-100: #ccfbf1;
-  --color-primary-500: #14b8a6;
-  --color-primary-600: #0d9488;
-  --color-primary-700: #0f766e;
-  --color-primary-800: #115e59;
+  /* Polished Medical Brand Colors */
+  --text-primary: #122056;       /* Pantone 2766 C (Deep Royal Navy) */
+  --color-accent: #5B65DC;       /* Pantone 2726 C (Electric Indigo Accent) */
+  --color-accent-hover: #4A54CA;
+  --color-secondary: #EEEFFD;    /* Secondary Buttons / Soft Tint */
+  --bg-app: #FAFAFD;             /* Page Background */
+  --surface-card: #FFFFFF;       /* Menubar & Tile Surface */
   
-  /* Light Neutral Gradients */
-  --bg-app: #f8fafc;
-  --surface-card: #ffffff;
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #94a3b8;
-  --border-subtle: #e2e8f0;
+  --text-secondary: #47547E;
+  --text-muted: #828EA8;
+  --border-subtle: #E3E5F8;
 }
 
-/* Dark Mode Variables */
+/* Dark Mode Variables - High Legibility Deep Slate-Navy */
 html.dark {
-  --bg-app: #090d16;
-  --surface-card: #111827;
-  --text-primary: #f8fafc;
-  --text-secondary: #cbd5e1;
-  --text-muted: #64748b;
-  --border-subtle: #1e293b;
+  --bg-app: #090D1F;
+  --surface-card: #111736;
+  --text-primary: #FAFAFD;
+  --text-secondary: #BAC4E6;
+  --text-muted: #7E8BAE;
+  --border-subtle: #1E285C;
+  --color-secondary: #19204A;
+  --color-accent: #6B75E6;
 }
 
 body {
@@ -48,8 +46,8 @@ body {
 }
 
 html.dark body {
-  background-color: #090d16;
-  color: #f8fafc;
+  background-color: #090D1F;
+  color: #FAFAFD;
 }
 
 h1, h2, h3, h4, h5, h6, .font-heading {
@@ -89,14 +87,14 @@ html[dir="rtl"] #a11yModalTrigger {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #c5caf5;
   border-radius: 9999px;
 }
 html.dark ::-webkit-scrollbar-thumb {
-  background: #334155;
+  background: #252e63;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #5B65DC;
 }
 
 /* Pulse animation for AI thinking indicator */
@@ -124,10 +122,10 @@ html.dark ::-webkit-scrollbar-thumb {
 /* Glowing breath animation */
 @keyframes breathGlow {
   0%, 100% {
-    box-shadow: 0 0 0 0 rgba(13, 148, 136, 0.4);
+    box-shadow: 0 0 0 0 rgba(91, 101, 220, 0.4);
   }
   50% {
-    box-shadow: 0 0 0 8px rgba(13, 148, 136, 0);
+    box-shadow: 0 0 0 8px rgba(91, 101, 220, 0);
   }
 }
 
@@ -185,12 +183,14 @@ input:focus, select:focus, textarea:focus, button:focus-visible {
   font-weight: 700;
   margin-top: 0.75rem;
   margin-bottom: 0.35rem;
+  color: inherit;
 }
 .ai-prose h4 {
   font-weight: 600;
   margin-top: 0.75rem;
   margin-bottom: 0.25rem;
   font-size: 0.95rem;
+  color: inherit;
 }
 
 .ai-prose p {
@@ -229,20 +229,30 @@ html.a11y-text-xlarge {
   font-size: 130% !important;
 }
 
-/* High Contrast Mode */
+/* High Contrast Mode - Strict ADA/WCAG Compliance */
 html.a11y-high-contrast {
-  filter: contrast(135%);
+  filter: contrast(140%);
 }
 html.a11y-high-contrast body {
   background-color: #000000 !important;
-  color: #ffffff !important;
+  color: #FFFFFF !important;
 }
+html.a11y-high-contrast header,
+html.a11y-high-contrast section,
+html.a11y-high-contrast main,
 html.a11y-high-contrast .bg-white,
 html.a11y-high-contrast .bg-slate-50,
 html.a11y-high-contrast .bg-slate-100 {
-  background-color: #111111 !important;
-  color: #ffffff !important;
+  background-color: #0A0A0A !important;
+  color: #FFFFFF !important;
   border-color: #444444 !important;
+}
+html.a11y-high-contrast .text-slate-900,
+html.a11y-high-contrast .text-slate-800,
+html.a11y-high-contrast .text-slate-700,
+html.a11y-high-contrast .text-slate-600,
+html.a11y-high-contrast .text-slate-500 {
+  color: #F0F0F0 !important;
 }
 
 /* Monochrome Grayscale Mode */
@@ -268,7 +278,7 @@ body.a11y-enhanced-spacing * {
 body.a11y-highlight-links a,
 body.a11y-highlight-links button {
   text-decoration: underline !important;
-  outline: 2px solid #0d9488 !important;
+  outline: 3px solid #5B65DC !important;
   outline-offset: 2px !important;
 }
 

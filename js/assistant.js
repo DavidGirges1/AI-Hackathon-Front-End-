@@ -384,10 +384,10 @@ const AssistantUI = {
     if (isUser) {
       msgWrapper.innerHTML = `
         <div class="max-w-[85%] sm:max-w-[75%] md:max-w-[65%] flex flex-col items-end">
-          <div class="px-4 py-3 rounded-2xl rounded-tr-sm bg-teal-700 text-white shadow-sm text-sm sm:text-base leading-relaxed break-words">
+          <div class="px-4 py-3 rounded-2xl rounded-tr-sm bg-[#5B65DC] text-white shadow-sm text-sm sm:text-base leading-relaxed break-words">
             <p class="whitespace-pre-wrap">${this.escapeHTML(msg.content)}</p>
           </div>
-          <div class="flex items-center gap-1 mt-1 text-[11px] text-slate-400 font-medium">
+          <div class="flex items-center gap-1 mt-1 text-[11px] text-[#828EA8] font-medium">
             <span>${timeStr}</span>
             <span>• Sent</span>
           </div>
@@ -399,29 +399,29 @@ const AssistantUI = {
 
       msgWrapper.innerHTML = `
         <div class="max-w-[95%] sm:max-w-[85%] md:max-w-[80%] flex items-start gap-3">
-          <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex-shrink-0 flex items-center justify-center ${isEmergency ? 'bg-rose-100 text-rose-700 border border-rose-200' : 'bg-teal-700 text-white shadow-sm'}">
+          <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex-shrink-0 flex items-center justify-center ${isEmergency ? 'bg-rose-100 text-rose-700 border border-rose-200' : 'bg-[#5B65DC] text-white shadow-sm'}">
             <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
             </svg>
           </div>
 
           <div class="flex-1 min-w-0">
-            <div class="px-4 py-3.5 sm:px-5 sm:py-4 rounded-2xl rounded-tl-sm ${isEmergency ? 'bg-rose-50 border border-rose-200 text-rose-950' : 'bg-white border border-slate-200/90 text-slate-800 shadow-sm'} text-sm sm:text-[15px] leading-relaxed ai-prose">
+            <div class="px-4 py-3.5 sm:px-5 sm:py-4 rounded-2xl rounded-tl-sm ${isEmergency ? 'bg-rose-50 border border-rose-200 text-rose-950' : 'bg-white dark:bg-[#111736] border border-[#E3E5F8] dark:border-[#1E285C] text-[#122056] dark:text-[#FAFAFD] shadow-sm'} text-sm sm:text-[15px] leading-relaxed ai-prose">
               ${formattedContent}
             </div>
 
-            <div class="flex items-center justify-between mt-1.5 px-1 text-[11px] text-slate-400">
+            <div class="flex items-center justify-between mt-1.5 px-1 text-[11px] text-[#828EA8]">
               <div class="flex items-center gap-2">
-                <span class="font-medium text-slate-500">AuraMed AI</span>
+                <span class="font-medium text-[#5B65DC] dark:text-[#8F9AF0]">AuraMed AI</span>
                 <span>•</span>
                 <span>${timeStr}</span>
                 <span class="hidden sm:inline">• Clinical Informational Engine</span>
               </div>
               <div class="flex items-center gap-1.5">
-                <button type="button" class="copy-msg-btn hover:text-teal-700 hover:bg-slate-100 p-1 rounded transition-colors" title="Copy response" aria-label="Copy response">
+                <button type="button" class="copy-msg-btn hover:text-[#5B65DC] hover:bg-[#EEEFFD] dark:hover:bg-[#1C2555] p-1 rounded transition-colors" title="Copy response" aria-label="Copy response">
                   <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                 </button>
-                <button type="button" class="helpful-btn hover:text-teal-700 hover:bg-slate-100 p-1 rounded transition-colors" title="Helpful" aria-label="Mark helpful">
+                <button type="button" class="helpful-btn hover:text-[#5B65DC] hover:bg-[#EEEFFD] dark:hover:bg-[#1C2555] p-1 rounded transition-colors" title="Helpful" aria-label="Mark helpful">
                   <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"></path></svg>
                 </button>
               </div>
@@ -434,9 +434,9 @@ const AssistantUI = {
       if (copyBtn) {
         copyBtn.addEventListener('click', () => {
           navigator.clipboard.writeText(msg.content);
-          copyBtn.innerHTML = `<svg class="w-3.5 h-3.5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>`;
+          copyBtn.innerHTML = `<svg class="w-3.5 h-3.5 text-[#5B65DC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>`;
           setTimeout(() => {
-            copyBtn.innerHTML = `<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>`;
+            copyBtn.innerHTML = `<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>`;
           }, 1500);
         });
       }
@@ -444,7 +444,7 @@ const AssistantUI = {
       const helpBtn = msgWrapper.querySelector('.helpful-btn');
       if (helpBtn) {
         helpBtn.addEventListener('click', () => {
-          helpBtn.classList.add('text-teal-700', 'bg-teal-50');
+          helpBtn.classList.add('text-[#5B65DC]', 'bg-[#EEEFFD]', 'dark:bg-[#1C2555]');
         });
       }
     }
@@ -539,7 +539,7 @@ const AssistantUI = {
     html = html.replace(/^### (.*$)/gim, '<h3 class="text-base font-bold text-slate-900 mt-2 mb-1.5 flex items-center gap-1.5">$1</h3>');
     html = html.replace(/^#### (.*$)/gim, '<h4 class="text-sm font-semibold text-slate-800 mt-2 mb-1">$1</h4>');
 
-    html = html.replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold text-teal-900">$1</strong>');
+    html = html.replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold text-[#122056] dark:text-white">$1</strong>');
     
     html = html.replace(/\*(.*?)\*/g, '<em class="italic text-slate-600">$1</em>');
     html = html.replace(/_(.*?)_/g, '<em class="italic text-slate-600">$1</em>');

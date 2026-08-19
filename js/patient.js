@@ -360,26 +360,26 @@ function initPatientForm(form) {
       const val = pill.getAttribute('data-condition-pill');
       if (selectedConditions.has(val)) {
         selectedConditions.delete(val);
-        pill.classList.remove('bg-teal-700', 'text-white', 'border-teal-700');
-        pill.classList.add('bg-slate-100', 'text-slate-700', 'border-slate-200');
+        pill.classList.remove('bg-[#5B65DC]', 'text-white', 'border-[#5B65DC]');
+        pill.classList.add('bg-[#EEEFFD]', 'text-[#122056]', 'border-[#E3E5F8]');
       } else {
         if (val === 'None') {
           selectedConditions.clear();
           document.querySelectorAll('[data-condition-pill]').forEach(p => {
-            p.classList.remove('bg-teal-700', 'text-white', 'border-teal-700');
-            p.classList.add('bg-slate-100', 'text-slate-700', 'border-slate-200');
+            p.classList.remove('bg-[#5B65DC]', 'text-white', 'border-[#5B65DC]');
+            p.classList.add('bg-[#EEEFFD]', 'text-[#122056]', 'border-[#E3E5F8]');
           });
         } else {
           selectedConditions.delete('None');
           const nonePill = document.querySelector('[data-condition-pill="None"]');
           if (nonePill) {
-            nonePill.classList.remove('bg-teal-700', 'text-white', 'border-teal-700');
-            nonePill.classList.add('bg-slate-100', 'text-slate-700', 'border-slate-200');
+            nonePill.classList.remove('bg-[#5B65DC]', 'text-white', 'border-[#5B65DC]');
+            nonePill.classList.add('bg-[#EEEFFD]', 'text-[#122056]', 'border-[#E3E5F8]');
           }
         }
         selectedConditions.add(val);
-        pill.classList.add('bg-teal-700', 'text-white', 'border-teal-700');
-        pill.classList.remove('bg-slate-100', 'text-slate-700', 'border-slate-200');
+        pill.classList.add('bg-[#5B65DC]', 'text-white', 'border-[#5B65DC]');
+        pill.classList.remove('bg-[#EEEFFD]', 'text-[#122056]', 'border-[#E3E5F8]');
       }
     });
   });
@@ -410,26 +410,26 @@ function initPatientForm(form) {
       const val = pill.getAttribute('data-allergy-pill');
       if (selectedAllergies.has(val)) {
         selectedAllergies.delete(val);
-        pill.classList.remove('bg-teal-700', 'text-white', 'border-teal-700');
-        pill.classList.add('bg-slate-100', 'text-slate-700', 'border-slate-200');
+        pill.classList.remove('bg-[#5B65DC]', 'text-white', 'border-[#5B65DC]');
+        pill.classList.add('bg-[#EEEFFD]', 'text-[#122056]', 'border-[#E3E5F8]');
       } else {
         if (val === 'No Known Allergies') {
           selectedAllergies.clear();
           document.querySelectorAll('[data-allergy-pill]').forEach(p => {
-            p.classList.remove('bg-teal-700', 'text-white', 'border-teal-700');
-            p.classList.add('bg-slate-100', 'text-slate-700', 'border-slate-200');
+            p.classList.remove('bg-[#5B65DC]', 'text-white', 'border-[#5B65DC]');
+            p.classList.add('bg-[#EEEFFD]', 'text-[#122056]', 'border-[#E3E5F8]');
           });
         } else {
           selectedAllergies.delete('No Known Allergies');
           const noAllergyPill = document.querySelector('[data-allergy-pill="No Known Allergies"]');
           if (noAllergyPill) {
-            noAllergyPill.classList.remove('bg-teal-700', 'text-white', 'border-teal-700');
-            noAllergyPill.classList.add('bg-slate-100', 'text-slate-700', 'border-slate-200');
+            noAllergyPill.classList.remove('bg-[#5B65DC]', 'text-white', 'border-[#5B65DC]');
+            noAllergyPill.classList.add('bg-[#EEEFFD]', 'text-[#122056]', 'border-[#E3E5F8]');
           }
         }
         selectedAllergies.add(val);
-        pill.classList.add('bg-teal-700', 'text-white', 'border-teal-700');
-        pill.classList.remove('bg-slate-100', 'text-slate-700', 'border-slate-200');
+        pill.classList.add('bg-[#5B65DC]', 'text-white', 'border-[#5B65DC]');
+        pill.classList.remove('bg-[#EEEFFD]', 'text-[#122056]', 'border-[#E3E5F8]');
       }
     });
   });
@@ -455,10 +455,10 @@ function initPatientForm(form) {
 
   function renderCustomPill(container, label, onRemove) {
     const chip = document.createElement('span');
-    chip.className = "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-teal-50 text-teal-800 border border-teal-200 animate-fadeIn";
+    chip.className = "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#EEEFFD] dark:bg-[#1C2555] text-[#122056] dark:text-[#FAFAFD] border border-[#E3E5F8] dark:border-[#1E285C] animate-fadeIn";
     chip.innerHTML = `
       <span>${label}</span>
-      <button type="button" class="text-teal-600 hover:text-teal-900 rounded-full focus:outline-none" aria-label="Remove ${label}">
+      <button type="button" class="text-[#5B65DC] hover:text-[#4A54CA] rounded-full focus:outline-none" aria-label="Remove ${label}">
         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
       </button>
     `;
@@ -469,10 +469,15 @@ function initPatientForm(form) {
     container.appendChild(chip);
   }
 
-  // Pre-fill Demo Data button handler
+  // Pre-fill Demo Data button handler (PRESERVES original user sign-up full name)
   if (prefillDemoBtn) {
-    prefillDemoBtn.addEventListener('click', () => {
-      document.getElementById('full_name').value = "Sarah Jenkins";
+    prefillDemoBtn.addEventListener('click', async () => {
+      const nameInput = document.getElementById('full_name');
+      if (nameInput && (!nameInput.value || !nameInput.value.trim())) {
+        const user = await AuthService.getCurrentUser();
+        nameInput.value = user?.fullName || "Patient";
+      }
+
       document.getElementById('date_of_birth').value = "1994-06-18";
       document.getElementById('gender').value = "female";
       handleGenderChange();
@@ -501,8 +506,8 @@ function initPatientForm(form) {
     if (pill) {
       if (attr === 'data-condition-pill') selectedConditions.add(value);
       if (attr === 'data-allergy-pill') selectedAllergies.add(value);
-      pill.classList.add('bg-teal-700', 'text-white', 'border-teal-700');
-      pill.classList.remove('bg-slate-100', 'text-slate-700', 'border-slate-200');
+      pill.classList.add('bg-[#5B65DC]', 'text-white', 'border-[#5B65DC]');
+      pill.classList.remove('bg-[#EEEFFD]', 'text-[#122056]', 'border-[#E3E5F8]');
     }
   }
 
