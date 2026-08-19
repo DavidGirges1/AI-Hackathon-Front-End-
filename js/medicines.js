@@ -37,35 +37,10 @@ const MedicineService = {
       }
     }
 
-    // Fallback seed medicines if first run
-    const defaultMedicines = [
-      {
-        id: "med_101",
-        name: "Lisinopril",
-        dosage: "10 mg",
-        frequency: "Once daily in morning",
-        addedAt: new Date().toISOString()
-      },
-      {
-        id: "med_102",
-        name: "Metformin",
-        dosage: "500 mg",
-        frequency: "Twice daily with meals",
-        addedAt: new Date().toISOString()
-      },
-      {
-        id: "med_103",
-        name: "Omeprazole",
-        dosage: "20 mg",
-        frequency: "Once daily before breakfast",
-        addedAt: new Date().toISOString()
-      }
-    ];
-
     const cached = LocalStorageDB.get('patient_medicines');
     if (cached === null) {
-      LocalStorageDB.set('patient_medicines', defaultMedicines);
-      return defaultMedicines;
+      LocalStorageDB.set('patient_medicines', []);
+      return [];
     }
     return cached;
   },

@@ -112,22 +112,23 @@ const PatientService = {
       }
     }
 
-    const defaultProfile = {
-      fullName: "Sarah Jenkins",
-      dateOfBirth: "1988-04-12",
+    const activeUser = await AuthService.getCurrentUser();
+    const fallbackProfile = {
+      fullName: activeUser?.fullName || "",
+      dateOfBirth: "",
       gender: "female",
-      bloodType: "O+",
-      height: "168",
-      weight: "65",
-      chronicConditions: ["Hypertension", "Mild Asthma"],
-      allergies: ["Penicillin"],
-      medicalHistory: "Appendectomy in 2018. Occasional seasonal sinus allergies.",
+      bloodType: "Unknown",
+      height: "",
+      weight: "",
+      chronicConditions: [],
+      allergies: [],
+      medicalHistory: "",
       isPregnant: false,
       pregnancyWeeks: "",
       pregnancyTrimester: ""
     };
 
-    return LocalStorageDB.get('patient_profile', defaultProfile);
+    return LocalStorageDB.get('patient_profile', fallbackProfile);
   },
 
   /**
@@ -181,11 +182,13 @@ const PatientService = {
 // 2. UI Controller for Patient Onboarding Form
 // ============================================================================
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   if (window.lucide) window.lucide.createIcons();
 
   const patientForm = document.getElementById('patientIntakeForm');
   if (patientForm) {
+    const user = await AuthService.requireAuth();
+    if (!user) return;
     initPatientForm(patientForm);
   }
 });

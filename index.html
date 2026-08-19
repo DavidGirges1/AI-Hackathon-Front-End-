@@ -20,7 +20,7 @@
     </div>
     <div class="space-y-1">
       <h1 class="text-xl font-bold text-slate-800 dark:text-slate-100">AuraMed<span class="text-teal-600">AI</span></h1>
-      <p class="text-xs text-slate-500">Initializing secure clinical session...</p>
+      <p class="text-xs text-slate-500">Checking secure clinical session...</p>
     </div>
   </div>
 
@@ -30,8 +30,8 @@
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
       try {
-        const user = AuthService.getCurrentUser();
-        if (user) {
+        const user = await AuthService.getCurrentUser();
+        if (user && user.id) {
           window.location.replace('assistant.html');
         } else {
           window.location.replace('login.html');

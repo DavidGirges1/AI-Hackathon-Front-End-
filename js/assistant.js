@@ -40,19 +40,24 @@ const ConversationService = {
     }
 
     // Default Clinical Welcome Message
+    const user = await AuthService.getCurrentUser();
     const profile = await PatientService.loadPatientProfile();
     const medicines = await MedicineService.loadMedicines();
-    const medNames = medicines.map(m => m.name).join(", ") || "none specified yet";
+    const displayName = profile?.fullName || user?.fullName || "Patient";
+    const medNames = medicines.length > 0 ? medicines.map(m => m.name).join(", ") : "None added yet";
 
     let maternalNote = "";
-    if (profile.gender === "female" && profile.isPregnant) {
+    if (profile?.gender === "female" && profile?.isPregnant) {
       maternalNote = `\n- **Maternal Status:** Currently Pregnant (${profile.pregnancyWeeks ? `${profile.pregnancyWeeks} Weeks` : 'Weeks not noted'} • ${profile.pregnancyTrimester || 'Active Trimester'})`;
     }
+
+    const conditionsText = profile?.chronicConditions?.length > 0 ? profile.chronicConditions.join(", ") : "None recorded";
+    const allergiesText = profile?.allergies?.length > 0 ? profile.allergies.join(", ") : "No known drug allergies";
 
     const initialWelcome = {
       id: "msg_welcome_1",
       sender: "assistant",
-      content: `Hello **${profile.fullName || "Patient"}**, I'm your **AuraMed AI Clinical Assistant**.\n\nI have loaded your health context into our secure session:\n- **Diagnosed Conditions:** ${profile.chronicConditions?.join(", ") || "None recorded"}\n- **Known Allergies:** ${profile.allergies?.join(", ") || "No known drug allergies"}${maternalNote}\n- **Active Medications:** ${medNames}\n\nYou can ask me questions regarding your medication timings, potential drug interactions, pregnancy-safe alternatives, or preparation for your next doctor's visit.`,
+      content: `Hello **${displayName}**, I'm your **AuraMed AI Clinical Assistant**.\n\nI have loaded your health context into our secure session:\n- **Diagnosed Conditions:** ${conditionsText}\n- **Known Allergies:** ${allergiesText}${maternalNote}\n- **Active Medications:** ${medNames}\n\nYou can ask me questions regarding your medication timings, potential drug interactions, pregnancy-safe alternatives, or preparation for your next doctor's visit.`,
       metadata: { isGreeting: true, hasDisclaimer: true },
       created_at: new Date().toISOString()
     };
@@ -238,6 +243,9 @@ const ConversationService = {
 
 const AssistantUI = {
   async init() {
+    const user = await AuthService.requireAuth();
+    if (!user) return;
+
     this.messagesContainer = document.getElementById('chatMessagesContainer');
     this.promptInput = document.getElementById('promptInput');
     this.sendBtn = document.getElementById('sendPromptBtn');
@@ -327,17 +335,20 @@ const AssistantUI = {
 
   async loadHeaderPatientContext() {
     const profile = await PatientService.loadPatientProfile();
-    if (profile && this.patientSummaryPill && this.patientNameDisplay) {
-      this.patientNameDisplay.textContent = profile.fullName || "Patient";
+    const user = await AuthService.getCurrentUser();
+    const displayName = profile?.fullName || user?.fullName || "Patient";
+
+    if (this.patientSummaryPill && this.patientNameDisplay) {
+      this.patientNameDisplay.textContent = displayName;
       
-      let subtext = profile.chronicConditions?.[0] || "General Health";
-      if (profile.gender === "female" && profile.isPregnant) {
+      let subtext = profile?.chronicConditions?.[0] || "Active Session";
+      if (profile?.gender === "female" && profile?.isPregnant) {
         subtext = `🤰 ${profile.pregnancyTrimester || 'Pregnant'} (${profile.pregnancyWeeks || '24'}w)`;
-      } else if (profile.bloodType && profile.bloodType !== "Unknown") {
+      } else if (profile?.bloodType && profile.bloodType !== "Unknown") {
         subtext += ` • ${profile.bloodType}`;
       }
 
-      this.patientSummaryPill.title = `Patient: ${profile.fullName} | Gender: ${profile.gender} | Conditions: ${profile.chronicConditions?.join(', ') || 'None'} | Allergies: ${profile.allergies?.join(', ') || 'None'}`;
+      this.patientSummaryPill.title = `Patient: ${displayName} | Gender: ${profile?.gender || 'unspecified'} | Conditions: ${profile?.chronicConditions?.join(', ') || 'None'} | Allergies: ${profile?.allergies?.join(', ') || 'None'}`;
       
       const badge = document.getElementById('patientSubtext');
       if (badge) {
