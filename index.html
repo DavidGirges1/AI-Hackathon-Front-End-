@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AuraMed AI - Medical Clinical Assistant</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Supabase JS Client CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="min-h-screen bg-slate-50 dark:bg-slate-950 flex items-center justify-center">
+  <div class="text-center p-6 space-y-4">
+    <div class="w-12 h-12 rounded-2xl bg-teal-700 text-white flex items-center justify-center shadow-lg mx-auto animate-pulse">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"></path>
+      </svg>
+    </div>
+    <div class="space-y-1">
+      <h1 class="text-xl font-bold text-slate-800 dark:text-slate-100">AuraMed<span class="text-teal-600">AI</span></h1>
+      <p class="text-xs text-slate-500">Initializing secure clinical session...</p>
+    </div>
+  </div>
+
+  <!-- Gateway Routing Script -->
+  <script src="js/supabase-client.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const user = AuthService.getCurrentUser();
+        if (user) {
+          window.location.replace('assistant.html');
+        } else {
+          window.location.replace('login.html');
+        }
+      } catch (e) {
+        window.location.replace('login.html');
+      }
+    });
+  </script>
+</body>
+</html>
